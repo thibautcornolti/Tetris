@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb  8 15:09:40 2017 Thibaut Cornolti
-** Last update Wed Feb  8 15:13:24 2017 Thibaut Cornolti
+** Last update Mon Feb 20 18:40:30 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -19,9 +19,9 @@ char	*my_strmcat(char *str1, char *str2)
   int	j;
 
   if (str2 == NULL)
-    return (str1);
+    return (my_strdup(str1));
   if (str1 == NULL)
-    return (str2);
+    return (my_strdup(str2));
   len1 = -1;
   while (str1[++len1]);
   len2 = -1;
