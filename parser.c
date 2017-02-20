@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:26:06 2017 Thibaut Cornolti
-** Last update Mon Feb 20 18:18:56 2017 Thibaut Cornolti
+** Last update Mon Feb 20 18:22:16 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
@@ -41,10 +41,12 @@ static int	fill_arg_max(t_pars *p, char **arg)
 	*(val[i]) = my_getnbr(arg[1]);
 	free(tab);
 	free(val);
+	free_tab(&arg);
 	return (0);
       }
   free(tab);
   free(val);
+  free_tab(&arg);
   exit(my_puterror("Invalid argument.\n"));
 }
 

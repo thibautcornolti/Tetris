@@ -5,19 +5,19 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:49:11 2017 Bastien
-** Last update Mon Feb 20 18:05:28 2017 Bastien
+** Last update Mon Feb 20 18:21:32 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
 #include "tetris.h"
 
-void	free_tab(char **tab)
+void	free_tab(char ***tab)
 {
   int	i;
 
   i = -1;
-  while (tab && tab[++i])
-    free(tab[i]);
-  if (tab)
-    free(tab);
+  while (*tab && (*tab)[++i])
+    free((*tab)[i]);
+  if (*tab)
+    free((*tab));
 }
