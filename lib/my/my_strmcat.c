@@ -5,10 +5,11 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb  8 15:09:40 2017 Thibaut Cornolti
-** Last update Mon Feb 20 18:40:30 2017 Thibaut Cornolti
+** Last update Mon Feb 20 18:41:09 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
+#include "my.h"
 
 char	*my_strmcat(char *str1, char *str2)
 {
