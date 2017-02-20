@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:27:16 2017 Thibaut Cornolti
-** Last update Mon Feb 20 13:38:27 2017 Thibaut Cornolti
+** Last update Mon Feb 20 16:33:16 2017 Bastien
 */
 
 #ifndef PARSER_H_
@@ -38,9 +38,6 @@ typedef struct	s_pars
   int		d;
 }		t_pars;
 
-int		my_super_parser(t_pars *, char **)
-{
-  
-}
+int		my_super_parser(t_pars *, char **);
 
 #endif /* !PARSER_H_ */
