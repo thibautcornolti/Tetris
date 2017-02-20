@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Mon Feb 20 13:24:10 2017 Thibaut Cornolti
+** Last update Mon Feb 20 13:28:10 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
@@ -15,11 +15,7 @@
 #include <sys/types.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "parser.h"
 #include "my.h"
 
-typedef struct	s_pars
-{
-
-}		t_pars;
-
-#endif /* TETRIS_H_ */
+#endif /* !TETRIS_H_ */
