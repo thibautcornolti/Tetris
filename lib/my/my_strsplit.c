@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu@epitech.net>
 ** 
 ** Started on  Wed Oct 12 11:08:17 2016 Thibaut Cornolti
-** Last update Mon Jan 30 10:15:08 2017 Thibaut Cornolti
+** Last update Mon Feb 20 18:34:38 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -35,7 +35,7 @@ static char	**init_tab(char *str, char **tab, char split)
 
   i = 0;
   count = my_strlen(str);
-  word = get_word_count(str, split);
+  word = get_word_count(str, split) - 1;
   tab = malloc(sizeof(char *) * (word + 2));
   if (tab == NULL)
     return ((char **) (long) my_puterror("error"));
