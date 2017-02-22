@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:27:16 2017 Thibaut Cornolti
-** Last update Wed Feb 22 16:23:49 2017 Thibaut Cornolti
+** Last update Wed Feb 22 17:35:59 2017 Thibaut Cornolti
 */
 
 #ifndef PARSER_H_
@@ -23,7 +23,7 @@
 # define DEF_ROW	"20"
 # define DEF_COL	"10"
 # define DEF_W		"0"
-# define DEF_D		"0"
+# define DEF_D		"false"
 
 typedef struct	s_pars
 {
