@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Wed Feb 22 16:26:29 2017 Thibaut Cornolti
+** Last update Wed Feb 22 16:34:20 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
