@@ -5,18 +5,18 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 16:22:15 2017 Thibaut Cornolti
-** Last update Mon Feb 20 18:06:13 2017 Thibaut Cornolti
+** Last update Wed Feb 22 16:18:22 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
 
-int		**init_val(t_pars *p)
+char		***init_val(t_pre_pars *p)
 {
-  int		**res;
+  char		***res;
   int		i;
 
   i = -1;
-  if ((res = malloc(sizeof(int *) * 10)) == NULL)
+  if ((res = malloc(sizeof(char **) * 10)) == NULL)
     exit(my_puterror("Malloc error.\n") + 84);
   res[++i] = &p->l;
   res[++i] = &p->kl;
@@ -42,7 +42,7 @@ char		**init_arg_max()
   res[++i] = "l";
   res[++i] = "key-left";
   res[++i] = "key-right";
-  res[++i] = "key-top";
+  res[++i] = "key-turn";
   res[++i] = "key-drop";
   res[++i] = "key-quit";
   res[++i] = "key-pause";

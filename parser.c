@@ -5,31 +5,15 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:26:06 2017 Thibaut Cornolti
-** Last update Mon Feb 20 18:32:03 2017 Thibaut Cornolti
+** Last update Wed Feb 22 16:21:37 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
 
-static void	init_pars(t_pars *p)
-{
-  p->l = DEF_L;
-  p->kl = DEF_KL;
-  p->kr = DEF_KR;
-  p->kt = DEF_KT;
-  p->kd = DEF_KD;
-  p->kq = DEF_KQ;
-  p->kp = DEF_KP;
-  p->row = DEF_ROW;
-  p->col = DEF_COL;
-  p->row = DEF_ROW;
-  p->w = DEF_W;
-  p->d = DEF_D;
-}
-
-static int	fill_arg_max(t_pars *p, char **arg)
+static int	fill_arg_max(t_pre_pars *p, char **arg)
 {
   char		**tab;
-  int		**val;
+  char		***val;
   int		i;
 
   tab = init_arg_max();
@@ -38,7 +22,7 @@ static int	fill_arg_max(t_pars *p, char **arg)
   while (tab[++i])
     if (!my_strcmp(arg[0], tab[i]))
       {
-	*(val[i]) = my_getnbr(arg[1]);
+	*(val[i]) = spe_pure(my_strdup(arg[1]));
 	free(tab);
 	free(val);
 	free_tab(&arg);
@@ -50,10 +34,10 @@ static int	fill_arg_max(t_pars *p, char **arg)
   exit(my_puterror("Invalid argument.\n"));
 }
 
-static int	fill_arg_min(t_pars *p, char *arg, char *arg2)
+static int	fill_arg_min(t_pre_pars *p, char *arg, char *arg2)
 {
   char		**tab;
-  int		**val;
+  char		***val;
   int		i;
 
   tab = init_arg_min();
@@ -62,7 +46,7 @@ static int	fill_arg_min(t_pars *p, char *arg, char *arg2)
   while (tab[++i])
     if (!my_strcmp(arg, tab[i]))
       {
-	*(val[i]) = my_getnbr(arg2);
+	*(val[i]) = spe_pure(my_strdup(arg2));
 	free(tab);
 	free(val);
 	return (1);
@@ -72,7 +56,7 @@ static int	fill_arg_min(t_pars *p, char *arg, char *arg2)
   exit(my_puterror("Invalid argument.\n"));
 }
 
-static int	fill_arg(t_pars *p, char **av, int i)
+static int	fill_arg(t_pre_pars *p, char **av, int i)
 {
   char		*arg;
 
@@ -86,12 +70,14 @@ static int	fill_arg(t_pars *p, char **av, int i)
 void		my_super_parser(t_pars *p, char **av)
 {
   int		i;
+  t_pre_pars	pp;
 
-  init_pars(p);
+  init_pars(&pp);
   i = 0;
   while (av[++i])
     if (av[i][0] == '-')
-      i += fill_arg(p, av, i);
+      i += fill_arg(&pp, av, i);
     else
       exit(my_puterror("Invalid argument.\n") + 84);
+  set_pars(&pp, p);
 }

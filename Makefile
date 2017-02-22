@@ -5,11 +5,12 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Mon Feb 20 18:24:20 2017 Thibaut Cornolti
+## Last update Wed Feb 22 16:22:18 2017 Thibaut Cornolti
 ##
 SRC	=	tetris.c	\
 		parser.c	\
 		parser_utils.c	\
+		parser_utils_2.c\
 		utils.c		\
 
 OBJS	=	$(SRCS:.c=.o)
