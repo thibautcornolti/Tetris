@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Thu Feb 23 11:53:54 2017 Bastien
+** Last update Thu Feb 23 21:32:57 2017 Bastien
 */
 
 #ifndef TETRIS_H_
@@ -24,9 +24,9 @@ typedef struct	s_shapes
   int		height;
   int		color;
   char		**map;
-  char		**mapleft;
-  char		**mapright;
-  char		**mapdown;
+  char		**map_left;
+  char		**map_right;
+  char		**map_down;
 }		t_shapes;
 
 void		free_tab(char ***);
