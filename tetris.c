@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Wed Feb 22 17:21:34 2017 Thibaut Cornolti
+** Last update Mon Feb 27 18:28:38 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
@@ -13,10 +13,13 @@
 int		main(int ac, char **av)
 {
   t_pars	p;
+  t_shapes	*s;
 
   (void) ac;
   my_super_parser(&p, av);
+  get_tetrimino(&s);
   if (p.d)
     debug(&p);
+  
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Mon Feb 27 18:12:53 2017 Bastien
+** Last update Mon Feb 27 18:27:08 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -34,7 +34,6 @@ void		put_structab(t_shapes **shapes, t_shapes *piece, int size)
 void	get_size(t_shapes *piece, char *first_line)
 {
   char	**tab;
-  char	*str;
 
   tab = my_strsplit(first_line, ' ');
   piece->width = my_getnbr(tab[0]);
@@ -89,32 +88,4 @@ void		get_tetrimino(t_shapes **shapes)
       close(fd);
     }
   closedir(directory);
-}
-
-int	main()
-{
-  t_shapes	*tab;
-  int		i;
-  int		k;
- 
-  tab = NULL;
-  get_tetrimino(&tab);
-  i = 1;
-  
-  k = -1;
-  while (tab[i].map[++k])
-    printf("%s\n", tab[i].map[k]);
-  printf("\n");
-  k = -1;
-  while (tab[i].map_down[++k])
-    printf("%s\n", tab[i].map_down[k]);
-  printf("\n");
-  k = -1;
-  while (tab[i].map_right[++k])
-    printf("%s\n", tab[i].map_right[k]);
-  printf("\n");
-  k = -1;
-  while (tab[i].map_left[++k])
-    printf("%s\n", tab[i].map_left[k]);
-  printf("\n");
 }

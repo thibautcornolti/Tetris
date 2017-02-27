@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Wed Feb 22 17:22:11 2017 Thibaut Cornolti
+## Last update Mon Feb 27 18:26:29 2017 Thibaut Cornolti
 ##
 SRC	=	tetris.c	\
 		parser.c	\
@@ -13,6 +13,8 @@ SRC	=	tetris.c	\
 		parser_utils_2.c\
 		utils.c		\
 		debug.c		\
+		tetrimino.c	\
+		set_rotated.c	\
 
 OBJS	=	$(SRCS:.c=.o)
 
