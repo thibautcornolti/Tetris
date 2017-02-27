@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Mon Feb 27 18:28:38 2017 Thibaut Cornolti
+** Last update Mon Feb 27 18:40:15 2017 Bastien
 */
 
 #include "tetris.h"
@@ -20,6 +20,5 @@ int		main(int ac, char **av)
   get_tetrimino(&s);
   if (p.d)
     debug(&p);
-  
   return (0);
 }

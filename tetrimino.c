@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Mon Feb 27 18:27:08 2017 Thibaut Cornolti
+** Last update Mon Feb 27 18:40:04 2017 Bastien
 */
 
 #include <sys/types.h>
@@ -42,7 +42,7 @@ void	get_size(t_shapes *piece, char *first_line)
   free_tab(&tab);
 }
 
-void	add_shape(t_shapes **shapes, int fd)
+void	add_shape(t_shapes **shapes, int fd, char *name)
 {
   t_shapes	*piece;
   char		*str;
@@ -65,6 +65,7 @@ void	add_shape(t_shapes **shapes, int fd)
     }
   piece->map = my_strsplit(str, '@');
   rotate_right(piece);
+  piece->name = my_strmcat(name, NULL);
   put_structab(shapes, piece, size);
   free(str);
   size += 1;
@@ -76,14 +77,16 @@ void		get_tetrimino(t_shapes **shapes)
   struct dirent	*file;
   int		fd;
 
+  *shapes = NULL;
   directory = opendir("./tetriminoes");
   while ((file = readdir(directory)) != NULL)
     {
       if (file->d_name[0] != '.')
 	{
-	  if ((fd = open(my_strmcat("./tetriminoes/", file->d_name), O_RDONLY)) == -1)
+	  if ((fd = open(my_strmcat("./tetriminoes/", file->d_name)
+			 , O_RDONLY)) == -1)
 	    return ;
-	  add_shape(shapes, fd);
+	  add_shape(shapes, fd, file->d_name);
 	}
       close(fd);
     }
