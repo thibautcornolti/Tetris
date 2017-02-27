@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Thu Feb 23 21:32:57 2017 Bastien
+** Last update Mon Feb 27 17:30:50 2017 Bastien
 */
 
 #ifndef TETRIS_H_
@@ -31,5 +31,7 @@ typedef struct	s_shapes
 
 void		free_tab(char ***);
 void		debug(t_pars *);
+void		rotate_right(t_shapes *);
+char		*fill_str(char *, int);
 
 #endif /* !TETRIS_H_ */

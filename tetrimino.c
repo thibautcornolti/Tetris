@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Mon Feb 27 10:54:40 2017 Bastien
+** Last update Mon Feb 27 18:12:53 2017 Bastien
 */
 
 #include <sys/types.h>
@@ -59,12 +59,13 @@ void	add_shape(t_shapes **shapes, int fd)
     {
       antileak = my_strmcat(str, "@");
       free(str);
+      temp = fill_str(temp, piece->width);
       str = my_strmcat(antileak, temp);
       free(temp);
       free(antileak);
     }
-  /* rotate_left(piece); */
   piece->map = my_strsplit(str, '@');
+  rotate_right(piece);
   put_structab(shapes, piece, size);
   free(str);
   size += 1;
@@ -90,20 +91,30 @@ void		get_tetrimino(t_shapes **shapes)
   closedir(directory);
 }
 
-/* int	main() */
-/* { */
-/*   t_shapes	*tab; */
-/*   int		i; */
-/*   int		k; */
+int	main()
+{
+  t_shapes	*tab;
+  int		i;
+  int		k;
+ 
+  tab = NULL;
+  get_tetrimino(&tab);
+  i = 1;
   
-/*   i = -1; */
-/*   tab = NULL; */
-/*   get_tetrimino(&tab); */
-/*   while (tab && tab[++i].map) */
-/*     { */
-/*       k = -1; */
-/*       while (tab[i].map[++k]) */
-/* 	printf("%s\n", tab[i].map[k]); */
-/*       printf("\n"); */
-/*     } */
-/* } */
+  k = -1;
+  while (tab[i].map[++k])
+    printf("%s\n", tab[i].map[k]);
+  printf("\n");
+  k = -1;
+  while (tab[i].map_down[++k])
+    printf("%s\n", tab[i].map_down[k]);
+  printf("\n");
+  k = -1;
+  while (tab[i].map_right[++k])
+    printf("%s\n", tab[i].map_right[k]);
+  printf("\n");
+  k = -1;
+  while (tab[i].map_left[++k])
+    printf("%s\n", tab[i].map_left[k]);
+  printf("\n");
+}
