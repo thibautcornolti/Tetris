@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 16:22:15 2017 Thibaut Cornolti
-** Last update Wed Feb 22 16:18:22 2017 Thibaut Cornolti
+** Last update Mon Feb 27 13:01:22 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
@@ -26,7 +26,7 @@ char		***init_val(t_pre_pars *p)
   res[++i] = &p->kq;
   res[++i] = &p->kp;
   res[++i] = &p->w;
-  res[++i] = &p->d;
+  res[++i] = &p->map_size;
   res[++i] = NULL;
   return (res);
 }
@@ -47,7 +47,7 @@ char		**init_arg_max()
   res[++i] = "key-quit";
   res[++i] = "key-pause";
   res[++i] = "without-next";
-  res[++i] = "debug";
+  res[++i] = "map-size";
   res[++i] = NULL;
   return (res);
 }
@@ -68,7 +68,6 @@ char		**init_arg_min()
   res[++i] = "kq";
   res[++i] = "kp";
   res[++i] = "w";
-  res[++i] = "d";
   res[++i] = NULL;
   return (res);
 }

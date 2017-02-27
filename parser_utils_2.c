@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 16:18:31 2017 Thibaut Cornolti
-** Last update Wed Feb 22 16:25:52 2017 Thibaut Cornolti
+** Last update Mon Feb 27 13:04:57 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
@@ -19,15 +19,15 @@ void		init_pars(t_pre_pars *p)
   p->kd = DEF_KD;
   p->kq = DEF_KQ;
   p->kp = DEF_KP;
-  p->row = DEF_ROW;
-  p->col = DEF_COL;
-  p->row = DEF_ROW;
+  p->map_size = DEF_MAPSIZE;
   p->w = DEF_W;
   p->d = DEF_D;
 }
 
 void		set_pars(t_pre_pars *pp, t_pars *p)
 {
+  char		**tab;
+
   p->l = my_getnbr(pp->l);
   p->kl = pp->kl;
   p->kr = pp->kr;
@@ -35,8 +35,10 @@ void		set_pars(t_pre_pars *pp, t_pars *p)
   p->kd = pp->kd;
   p->kq = pp->kq;
   p->kp = pp->kp;
-  p->row = my_getnbr(pp->row);
-  p->col = my_getnbr(pp->col);
+  tab = my_strsplit(pp->map_size, ',');
+  p->row = my_getnbr(tab[0]);
+  p->col = my_getnbr(tab[1]);
+  free_tab(&tab);
   p->w = (my_strcmp(pp->w, "false")) ? 1 : 0;
   p->d = (my_strcmp(pp->d, "false")) ? 1 : 0;
 }

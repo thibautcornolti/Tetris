@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:26:06 2017 Thibaut Cornolti
-** Last update Wed Feb 22 17:38:07 2017 Thibaut Cornolti
+** Last update Mon Feb 27 12:58:36 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
@@ -20,7 +20,7 @@ static int	fill_arg_max(t_pre_pars *p, char **arg)
   tab = init_arg_max();
   val = init_val(p);
   i = -1;
-  while (tab[++i])
+  while (tab[++i] && arg[1])
     if (!my_strcmp(arg[0], tab[i]))
       {
 	tmp = spe_pure(my_strdup(arg[1]));
@@ -65,10 +65,10 @@ static int	fill_arg(t_pre_pars *p, char **av, int i)
   char		*arg;
 
   arg = av[i] + 1;
-  if (!my_strcmp(arg, "d"))
+  if (!my_strcmp(arg, "d") || !my_strcmp(arg, "-debug"))
     return (0 * (long) (p->d = "true"));
-  else if (contains_char(arg, '='))
-    return (fill_arg_max(p, my_strsplit(arg, '=')));
+  else if (!my_strncmp(av[i], "--", 2))
+    return (fill_arg_max(p, my_strsplit(arg + 1, '=')));
   else
     return (fill_arg_min(p, arg, av[i + 1]));
 }

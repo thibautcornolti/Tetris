@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:49:11 2017 Bastien
-** Last update Wed Feb 22 16:50:12 2017 Thibaut Cornolti
+** Last update Mon Feb 27 12:50:54 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -25,7 +25,7 @@ void	free_tab(char ***tab)
 
 char	*spe_pure(char *s)
 {
-  if (s[0] == '"' || s[0] == '\'')
+  if (s[0] == '"' || s[0] == '\'' || s[0] == '{')
     {
       s[my_strlen(s) - 1] = 0;
       s += 1;

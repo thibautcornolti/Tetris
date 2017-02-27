@@ -1,11 +1,11 @@
 /*
-** parser.h for tetris in /home/thibrex/Dropbox/delivery/PSU/PSU_2016_tetris
+1;2802;0c** parser.h for tetris in /home/thibrex/Dropbox/delivery/PSU/PSU_2016_tetris
 ** 
 ** Made by Thibaut Cornolti
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:27:16 2017 Thibaut Cornolti
-** Last update Wed Feb 22 17:35:59 2017 Thibaut Cornolti
+** Last update Mon Feb 27 13:03:35 2017 Thibaut Cornolti
 */
 
 #ifndef PARSER_H_
@@ -20,8 +20,7 @@
 # define DEF_KD		"^[[B"
 # define DEF_KQ		"q"
 # define DEF_KP		" "
-# define DEF_ROW	"20"
-# define DEF_COL	"10"
+# define DEF_MAPSIZE	"20,10"
 # define DEF_W		"0"
 # define DEF_D		"false"
 
@@ -49,10 +48,9 @@ typedef struct	s_pre_pars
   char		*kd;
   char		*kq;
   char		*kp;
-  char		*row;
-  char		*col;
   char		*w;
   char		*d;
+  char		*map_size;
 }		t_pre_pars;
 
 void		my_super_parser(t_pars *, char **);
