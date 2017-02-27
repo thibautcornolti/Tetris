@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Mon Feb 20 19:08:43 2017 Bastien
+** Last update Mon Feb 27 10:54:40 2017 Bastien
 */
 
 #include <sys/types.h>
@@ -15,20 +15,20 @@
 #include <unistd.h>
 #include "tetris.h"
 
-void		put_structab(t_shapes ***shapes, t_shapes *piece, int size)
+void		put_structab(t_shapes **shapes, t_shapes *piece, int size)
 {
-  t_shapes	**tab;
+  t_shapes	*tab;
   int		i;
 
   i = (!*shapes) ? 0 : -1;
-  if ((tab = malloc(sizeof(t_shapes *) * (size + 1))) == NULL)
+  if ((tab = malloc(sizeof(t_shapes) * (size + 1))) == NULL)
     return ;
-  while ((*shapes) && (*shapes)[++i])
+  while ((*shapes) && (*shapes)[++i].map)
     tab[i] = (*shapes)[i];
-  tab[i] = piece;
-  tab[i + 1] = NULL;
+  tab[i] = *piece;
+  tab[i + 1].map = NULL;
   free(*shapes);
-  (*shapes) = tab;
+  *shapes = tab;
 }
 
 void	get_size(t_shapes *piece, char *first_line)
@@ -43,7 +43,7 @@ void	get_size(t_shapes *piece, char *first_line)
   free_tab(&tab);
 }
 
-void	add_shape(t_shapes ***shapes, int fd)
+void	add_shape(t_shapes **shapes, int fd)
 {
   t_shapes	*piece;
   char		*str;
@@ -63,13 +63,14 @@ void	add_shape(t_shapes ***shapes, int fd)
       free(temp);
       free(antileak);
     }
+  /* rotate_left(piece); */
   piece->map = my_strsplit(str, '@');
   put_structab(shapes, piece, size);
   free(str);
   size += 1;
 }
 
-void		get_tetrimino(t_shapes ***shapes)
+void		get_tetrimino(t_shapes **shapes)
 {
   DIR		*directory;
   struct dirent	*file;
@@ -89,25 +90,20 @@ void		get_tetrimino(t_shapes ***shapes)
   closedir(directory);
 }
 
-int	main()
-{
-  t_shapes	**tab;
-  int		i;
-  int		k;
+/* int	main() */
+/* { */
+/*   t_shapes	*tab; */
+/*   int		i; */
+/*   int		k; */
   
-  i = -1;
-  tab = NULL;
-  get_tetrimino(&tab);
-  while (tab && tab[++i])
-    {
-      k = -1;
-      while (tab[i]->map[++k])
-	printf("%s\n", tab[i]->map[k]);
-    }
-  while (tab && --i >= 0)
-    {
-      free_tab(&tab[i]->map);
-      free(tab[i]);
-    }
-  free(tab);
-}
+/*   i = -1; */
+/*   tab = NULL; */
+/*   get_tetrimino(&tab); */
+/*   while (tab && tab[++i].map) */
+/*     { */
+/*       k = -1; */
+/*       while (tab[i].map[++k]) */
+/* 	printf("%s\n", tab[i].map[k]); */
+/*       printf("\n"); */
+/*     } */
+/* } */
