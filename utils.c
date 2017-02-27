@@ -5,11 +5,29 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:49:11 2017 Bastien
-** Last update Mon Feb 27 14:26:43 2017 Thibaut Cornolti
+** Last update Mon Feb 27 16:10:54 2017 Bastien
 */
 
 #include <stdlib.h>
 #include "tetris.h"
+
+char    *fill_str(char *str, int i)
+{
+  char  *dest;
+  int   j;
+
+  j = -1;
+  if ((dest = malloc(sizeof(char) * (i + 1))) == NULL)
+    return (NULL);
+  while (str[++j])
+    dest[j] = str[j];
+  j--;
+  while (++j < i)
+    dest[j] = ' ';
+  dest[j] = '\0';
+  free(str);
+  return (dest);
+}
 
 void	free_tab(char ***tab)
 {
