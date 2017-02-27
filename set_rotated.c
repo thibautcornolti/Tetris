@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Feb 23 21:45:45 2017 Bastien
-** Last update Mon Feb 27 18:21:00 2017 Bastien
+** Last update Mon Feb 27 18:50:03 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -20,14 +20,16 @@ void	rotate_down(t_shapes *piece)
 
   i = -1;
   k = piece->height;
-  if ((piece->map_down = malloc(sizeof(char *) * (piece->height + 1))) == NULL)
+  if ((piece->map_down = malloc(sizeof(char *) *
+				(piece->height + 1))) == NULL)
     return ;
   piece->map_down[k] = NULL;
   while (--k >= 0 && piece->map[k])
     {
       j = piece->width;
       v = -1;
-      if ((piece->map_down[++i] = malloc(sizeof(char) * (piece->width + 1))) == NULL)
+      if ((piece->map_down[++i] = malloc(sizeof(char) *
+					 (piece->width + 1))) == NULL)
   	return ;
       while (--j >= 0)
   	piece->map_down[i][++v] = piece->map[k][j];
@@ -44,14 +46,16 @@ void	rotate_left(t_shapes *piece)
 
   k = piece->width;
   v = 0;
-  if ((piece->map_left = malloc(sizeof(char *) * (piece->width + 1))) == NULL)
+  if ((piece->map_left = malloc(sizeof(char *) *
+				(piece->width + 1))) == NULL)
     return ;
   piece->map_left[piece->width] = NULL;
   while (--k >= 0)
     {
       j = -1;
       w = -1;
-      if ((piece->map_left[v] = malloc(sizeof(char) * (piece->height + 1))) == NULL)
+      if ((piece->map_left[v] = malloc(sizeof(char) *
+				       (piece->height + 1))) == NULL)
 	return ;
       piece->map_left[v][piece->height] = '\0';
       while (++j < piece->height)
@@ -70,14 +74,16 @@ void	rotate_right(t_shapes *piece)
 
   k = -1;
   v = 0;
-  if ((piece->map_right = malloc(sizeof(char *) * (piece->width + 1))) == NULL)
+  if ((piece->map_right = malloc(sizeof(char *) *
+				 (piece->width + 1))) == NULL)
     return ;
   piece->map_right[piece->width] = NULL;
   while (++k < piece->width)
     {
       j = -1;
       w = piece->height;
-      if ((piece->map_right[v] = malloc(sizeof(char) * (piece->height + 1))) == NULL)
+      if ((piece->map_right[v] = malloc(sizeof(char) *
+					(piece->height + 1))) == NULL)
   	return ;
       piece->map_right[v][piece->height] = '\0';
       while (++j < piece->height)

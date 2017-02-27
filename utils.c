@@ -5,16 +5,16 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:49:11 2017 Bastien
-** Last update Mon Feb 27 16:10:54 2017 Bastien
+** Last update Mon Feb 27 19:04:01 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
 #include "tetris.h"
 
-char    *fill_str(char *str, int i)
+char		*fill_str(char *str, int i)
 {
-  char  *dest;
-  int   j;
+  char		*dest;
+  int		j;
 
   j = -1;
   if ((dest = malloc(sizeof(char) * (i + 1))) == NULL)
@@ -29,9 +29,9 @@ char    *fill_str(char *str, int i)
   return (dest);
 }
 
-void	free_tab(char ***tab)
+void		free_tab(char ***tab)
 {
-  int	i;
+  int		i;
 
   i = -1;
   while (*tab && (*tab)[++i])
@@ -41,7 +41,7 @@ void	free_tab(char ***tab)
     free((*tab));
 }
 
-char	*spe_pure(char *s)
+char		*spe_pure(char *s)
 {
   if (s[0] == '"' || s[0] == '\'' || s[0] == '{')
     {
@@ -51,7 +51,30 @@ char	*spe_pure(char *s)
   return (s);
 }
 
-int	my_help()
+void		sort_tetri(t_shapes *shapes)
+{
+  int		i;
+  int		j;
+  t_shapes	tmp;
+
+  i = -1;
+  while (shapes[++i].map)
+    shapes[i].name[my_strlen(shapes[i].name) - 10] = 0;
+  i = -1;
+  while (shapes[++i].map)
+    {
+      j = -1;
+      while (shapes[++j].map)
+	if (my_strcmp(shapes[i].name, shapes[j].name) < 0)
+	  {
+	    tmp = shapes[i];
+	    shapes[i] = shapes[j];
+	    shapes[j] = tmp;
+	  }
+    }
+}
+
+int		my_help()
 {
   my_putstr("Usage: ./tetris [options]\nOptions:\n");
   my_putstr("\t--help\t\t\tDisplay this help\n\t-l --level");

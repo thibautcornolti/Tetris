@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 17:09:29 2017 Thibaut Cornolti
-** Last update Wed Feb 22 17:27:08 2017 Thibaut Cornolti
+** Last update Mon Feb 27 19:16:43 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
@@ -18,7 +18,7 @@ static void	print_debug(char *s)
     my_putstr(s);
 }
 
-void		debug(t_pars *p)
+static void	key_debug(t_pars *p)
 {
   my_putstr("*** DEBUG MODE ***\nKey Left : ");
   print_debug(p->kl);
@@ -41,4 +41,37 @@ void		debug(t_pars *p)
   my_putstr("*");
   my_put_nbr(p->col);
   my_putstr("\n");
+}
+
+static void	tetri_debug(t_shapes *s)
+{
+  int		i;
+  int		j;
+
+  my_putstr("Tetriminos : ");
+  my_put_nbr(my_shapeslen(s));
+  my_putstr("\n");
+  i = -1;
+  while (s[++i].map)
+    {
+      my_putstr("Tetriminos : Name ");
+      my_putstr(s[i].name);
+      my_putstr(" : Size ");
+      my_put_nbr(s[i].width); 
+      my_putstr("*");
+      my_put_nbr(s[i].height);
+      my_putstr(" : Color ");
+      my_put_nbr(s[i].color);
+      my_putstr(" :\n");
+      j = -1;
+      while (s[i].map[++j])
+	my_putstr(my_putstr(s[i].map[j]) + "\n");
+    }
+}
+
+void		debug(t_pars *p, t_shapes *s)
+{
+  key_debug(p);
+  tetri_debug(s);
+  my_putstr("Press any key to start Tetris\n");
 }
