@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Mon Feb 27 18:53:51 2017 Thibaut Cornolti
+** Last update Tue Feb 28 10:21:52 2017 Bastien
 */
 
 #include <sys/types.h>
@@ -31,29 +31,13 @@ void		put_structab(t_shapes **shapes, t_shapes *piece, int size)
   *shapes = tab;
 }
 
-void	get_size(t_shapes *piece, char *first_line)
+void	add_map(int fd, t_shapes *piece)
 {
-  char	**tab;
-
-  tab = my_strsplit(first_line, ' ');
-  piece->width = my_getnbr(tab[0]);
-  piece->height = my_getnbr(tab[1]);
-  piece->color = my_getnbr(tab[2]);
-  free_tab(&tab);
-}
-
-void	add_shape(t_shapes **shapes, int fd, char *name)
-{
-  t_shapes	*piece;
-  char		*str;
-  char		*temp;
-  char		*antileak;
-  static int	size = 1;
+  char          *str;
+  char          *temp;
+  char          *antileak;
 
   str = NULL;
-  if ((piece = malloc(sizeof(t_shapes))) == NULL)
-    return ;
-  get_size(piece, get_next_line(fd));
   while ((temp = get_next_line(fd)) != NULL)
     {
       antileak = my_strmcat(str, "@");
@@ -64,11 +48,46 @@ void	add_shape(t_shapes **shapes, int fd, char *name)
       free(antileak);
     }
   piece->map = my_strsplit(str, '@');
+  check_map(piece, str);
+  free(str);
+}
+
+void	add_shape(t_shapes **shapes, int fd, char *name)
+{
+  t_shapes	*piece;
+  static int	size = 1;
+
+  if ((piece = malloc(sizeof(t_shapes))) == NULL)
+    return ;
+  if (get_size(piece, get_next_line(fd)))
+    return ;
+  add_map(fd, piece);
+  if (piece->map == NULL)
+    return ;
   rotate_right(piece);
   piece->name = my_strmcat(name, NULL);
   put_structab(shapes, piece, size);
-  free(str);
   size += 1;
+}
+
+int	check_name(char *str)
+{
+  char	*witness;
+  int	i;
+  int	j;
+
+  j = 10;
+  i = my_strlen(str);
+  witness = ".tetrimino";
+  while (--j >= 0 && --i >= 0)
+    if (witness[j] != str[i])
+      return (0);
+  if (i == -1 && j > -1)
+    return (0);
+  else if (j == -1 && i > -1)
+    return (1);
+  else
+    return (0);
 }
 
 void		get_tetrimino(t_shapes **shapes)
@@ -81,10 +100,9 @@ void		get_tetrimino(t_shapes **shapes)
   directory = opendir("./tetriminoes");
   while ((file = readdir(directory)) != NULL)
     {
-      if (file->d_name[0] != '.')
+      if (check_name(file->d_name))
 	{
-	  if ((fd = open(my_strmcat("./tetriminoes/", file->d_name)
-			 , O_RDONLY)) == -1)
+	  if ((fd = open(my_strmcat("./tetriminoes/", file->d_name), O_RDONLY)) == -1)
 	    return ;
 	  add_shape(shapes, fd, file->d_name);
 	}
@@ -92,4 +110,7 @@ void		get_tetrimino(t_shapes **shapes)
     }
   closedir(directory);
   sort_tetri(*shapes);
+  int i = -1;
+  while ((*shapes)[++i].map)
+    printf("%s\n", (*shapes)[i].name);
 }
