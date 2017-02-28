@@ -5,9 +5,10 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 17:09:29 2017 Thibaut Cornolti
-** Last update Mon Feb 27 19:16:43 2017 Thibaut Cornolti
+** Last update Mon Feb 27 19:50:55 2017 Thibaut Cornolti
 */
 
+#include <ncurses.h>
 #include "tetris.h"
 
 static void	print_debug(char *s)
@@ -57,7 +58,7 @@ static void	tetri_debug(t_shapes *s)
       my_putstr("Tetriminos : Name ");
       my_putstr(s[i].name);
       my_putstr(" : Size ");
-      my_put_nbr(s[i].width); 
+      my_put_nbr(s[i].width);
       my_putstr("*");
       my_put_nbr(s[i].height);
       my_putstr(" : Color ");
@@ -74,4 +75,6 @@ void		debug(t_pars *p, t_shapes *s)
   key_debug(p);
   tetri_debug(s);
   my_putstr("Press any key to start Tetris\n");
+  read(0, NULL, 1);
+  endwin();
 }

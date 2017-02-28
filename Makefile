@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Mon Feb 27 19:10:40 2017 Thibaut Cornolti
+## Last update Mon Feb 27 19:22:32 2017 Thibaut Cornolti
 ##
 SRC	=	tetris.c	\
 		parser.c	\
@@ -29,7 +29,7 @@ RM	=	rm -f
 
 LIB_P	=	-Llib/my
 
-LIB	=	-lmy
+LIB	=	-lmy -lncurses
 
 all:	$(NAME)
 
