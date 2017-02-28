@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:49:11 2017 Bastien
-** Last update Tue Feb 28 10:20:48 2017 Bastien
+** Last update Tue Feb 28 12:16:09 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -60,6 +60,8 @@ void		sort_tetri(t_shapes *shapes)
   t_shapes	tmp;
 
   i = -1;
+  if (!shapes)
+    return ;
   while (shapes[++i].map)
     shapes[i].name[my_strlen(shapes[i].name) - 10] = 0;
   i = -1;

@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Mon Feb 27 20:03:02 2017 Thibaut Cornolti
+** Last update Tue Feb 28 13:18:37 2017 Bastien
 */
 
 #include <ncurses.h>

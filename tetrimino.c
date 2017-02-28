@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Tue Feb 28 10:21:52 2017 Bastien
+** Last update Tue Feb 28 13:18:22 2017 Bastien
 */
 
 #include <sys/types.h>
@@ -60,7 +60,10 @@ void	add_shape(t_shapes **shapes, int fd, char *name)
   if ((piece = malloc(sizeof(t_shapes))) == NULL)
     return ;
   if (get_size(piece, get_next_line(fd)))
-    return ;
+    {
+      while (get_next_line(fd));
+      return ;
+    }
   add_map(fd, piece);
   if (piece->map == NULL)
     return ;
@@ -111,6 +114,6 @@ void		get_tetrimino(t_shapes **shapes)
   closedir(directory);
   sort_tetri(*shapes);
   int i = -1;
-  while ((*shapes)[++i].map)
+  while ((*shapes) && (*shapes)[++i].map)
     printf("%s\n", (*shapes)[i].name);
 }
