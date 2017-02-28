@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Mon Feb 27 19:21:48 2017 Thibaut Cornolti
+** Last update Tue Feb 28 12:29:23 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
@@ -30,12 +30,15 @@ typedef struct	s_shapes
   char		**map_down;
 }		t_shapes;
 
+int		my_shapeslen(t_shapes *);
+int		my_tablen(char **);
+int		get_size(t_shapes *, char *);
+char		*fill_str(char *, int);
 void		free_tab(char ***);
 void		debug(t_pars *, t_shapes *);
 void		rotate_right(t_shapes *);
-char		*fill_str(char *, int);
 void		get_tetrimino(t_shapes **);
 void		sort_tetri(t_shapes *);
-int		my_shapeslen(t_shapes *);
+void		check_map(t_shapes *, char *);
 
 #endif /* !TETRIS_H_ */

@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:49:11 2017 Bastien
-** Last update Mon Feb 27 19:04:01 2017 Thibaut Cornolti
+** Last update Tue Feb 28 10:20:48 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -17,9 +17,11 @@ char		*fill_str(char *str, int i)
   int		j;
 
   j = -1;
+  if (my_strlen(str) > i)
+    return (NULL);
   if ((dest = malloc(sizeof(char) * (i + 1))) == NULL)
     return (NULL);
-  while (str[++j])
+  while (str && str[++j])
     dest[j] = str[j];
   j--;
   while (++j < i)
