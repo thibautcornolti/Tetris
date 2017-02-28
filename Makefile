@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Tue Feb 28 15:59:58 2017 Bastien
+## Last update Tue Feb 28 17:25:33 2017 Thibaut Cornolti
 ##
 
 SRC	=	tetris.c		\
@@ -16,6 +16,7 @@ SRC	=	tetris.c		\
 		utils2.c		\
 		tools.c			\
 		debug.c			\
+		display.c		\
 		tetrimino.c		\
 		check_tetrimino.c	\
 		set_rotated.c		\
@@ -43,10 +44,7 @@ $(NAME):
 clean:
 	$(RM) $(OBJS)
 
-clean_lib:
-	cd lib/my/ && make fclean
-
-fclean:	clean clean_lib
+fclean:	clean
 	$(RM) $(NAME)
 
 re:	fclean all
