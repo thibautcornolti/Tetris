@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:26:06 2017 Thibaut Cornolti
-** Last update Mon Feb 27 14:06:25 2017 Thibaut Cornolti
+** Last update Tue Feb 28 16:39:55 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
@@ -46,7 +46,7 @@ static int	fill_arg_min(t_pre_pars *p, char *arg, char *arg2)
   tab = init_arg_min();
   val = init_val(p);
   i = -1;
-  while (tab[++i])
+  while (tab[++i] && arg2)
     if (!my_strcmp(arg, tab[i]))
       {
 	tmp = spe_pure(my_strdup(arg2));
