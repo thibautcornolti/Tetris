@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Tue Feb 28 12:29:23 2017 Thibaut Cornolti
+** Last update Tue Feb 28 17:07:22 2017 Bastien
 */
 
 #ifndef TETRIS_H_
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "parser.h"
+#include "game.h"
 #include "my.h"
 
 typedef struct	s_shapes
