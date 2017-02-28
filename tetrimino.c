@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Tue Feb 28 13:18:22 2017 Bastien
+** Last update Tue Feb 28 13:22:36 2017 Bastien
 */
 
 #include <sys/types.h>
@@ -113,7 +113,4 @@ void		get_tetrimino(t_shapes **shapes)
     }
   closedir(directory);
   sort_tetri(*shapes);
-  int i = -1;
-  while ((*shapes) && (*shapes)[++i].map)
-    printf("%s\n", (*shapes)[i].name);
 }

@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 10:03:47 2017 Bastien
-** Last update Tue Feb 28 13:08:24 2017 Bastien
+** Last update Tue Feb 28 13:20:45 2017 Bastien
 */
 
 #include <unistd.h>
@@ -22,10 +22,7 @@ int	get_size(t_shapes *piece, char *first_line)
       return (1);
   tab = my_strsplit(first_line, ' ');
   if (my_tablen(tab) != 3)
-    {
-      free(first_line);
-      return (1);
-    }
+    return (1);
   piece->width = my_getnbr(tab[0]);
   piece->height = my_getnbr(tab[1]);
   piece->color = my_getnbr(tab[2]);
