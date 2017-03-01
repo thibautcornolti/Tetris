@@ -5,11 +5,13 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:08:20 2017 Thibaut Cornolti
-** Last update Wed Mar  1 11:25:34 2017 Thibaut Cornolti
+** Last update Wed Mar  1 12:51:43 2017 Thibaut Cornolti
 */
 
 #ifndef GAME_H_
 # define GAME_H_
+
+typedef struct	s_shapes t_shapes;
 
 typedef struct	s_game
 {
