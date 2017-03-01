@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Wed Mar  1 10:15:44 2017 Thibaut Cornolti
+** Last update Wed Mar  1 11:19:58 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
@@ -43,6 +43,7 @@ void		get_tetrimino(t_shapes **);
 void		sort_tetri(t_shapes *);
 void		check_map(t_shapes *, char *);
 int		display(t_game *, t_pars *);
+void		draw_title_te(char *, int);
 void		create_box(int, int, int, int);
 void		create_box_sl(int, int, int, int);
 

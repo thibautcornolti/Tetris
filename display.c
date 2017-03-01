@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:12:32 2017 Thibaut Cornolti
-** Last update Wed Mar  1 10:56:31 2017 Thibaut Cornolti
+** Last update Wed Mar  1 11:17:21 2017 Thibaut Cornolti
 */
 
 #include <time.h>
@@ -33,32 +33,6 @@ int		get_action(t_pars *p)
   return (0);
 }
 
-static void	draw_title_line(char *buff, int i)
-{
-  char		tmp;
-
-  attron(COLOR_PAIR(1));
-  tmp = buff[13];
-  buff[13] = 0;
-  mvprintw(i, 0, buff);
-  attroff(COLOR_PAIR(1));
-  buff[13] = tmp;
-  
-  attron(COLOR_PAIR(2));
-  tmp = buff[25];
-  buff[25] = 0;
-  mvprintw(i, 13, buff + 12);
-  attroff(COLOR_PAIR(2));
-  buff[25] = tmp;
-
-  attron(COLOR_PAIR(2));
-  tmp = buff[25];
-  buff[25] = 0;
-  mvprintw(i, 13, buff + 12);
-  attroff(COLOR_PAIR(2));
-  buff[25] = tmp;
-}
-
 static void	draw_title()
 {
   int		fd;
@@ -73,9 +47,10 @@ static void	draw_title()
   init_pair(3, 3, COLOR_BLACK);
   init_pair(4, 4, COLOR_BLACK);
   init_pair(5, 5, COLOR_BLACK);
+  init_pair(6, 6, COLOR_BLACK);
   while ((buff = get_next_line(fd)))
     {
-      draw_title_line(buff, i);
+      draw_title_te(buff, i);
       i += 1;
     }
   close(fd);
