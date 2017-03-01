@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Wed Mar  1 09:11:11 2017 Thibaut Cornolti
+** Last update Wed Mar  1 09:55:17 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
@@ -13,11 +13,11 @@
 #include <termios.h>
 #include "tetris.h"
 
-void		non_block(int act, int vtime)
+void			non_block(int act, int vtime)
 {
-  struct termios t;
-  static struct termios base;
-  static int oui = 1;
+  struct termios	t;
+  static struct termios	base;
+  static int		oui = 1;
 
   if (oui)
     {
@@ -34,11 +34,11 @@ void		non_block(int act, int vtime)
     tcsetattr(0, TCSAFLUSH, &base);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
-  t_pars	p;
-  t_shapes	*s;
-  t_game	g;
+  t_pars		p;
+  t_shapes		*s;
+  t_game		g;
 
   (void) ac;
   my_super_parser(&p, av);

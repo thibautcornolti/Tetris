@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Wed Mar  1 09:32:46 2017 Thibaut Cornolti
+** Last update Wed Mar  1 10:15:44 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
@@ -33,6 +33,7 @@ typedef struct	s_shapes
 
 int		my_shapeslen(t_shapes *);
 int		my_tablen(char **);
+int		my_intlen(int);
 int		get_size(t_shapes *, char *);
 char		*fill_str(char *, int);
 void		free_tab(char ***);
@@ -42,5 +43,7 @@ void		get_tetrimino(t_shapes **);
 void		sort_tetri(t_shapes *);
 void		check_map(t_shapes *, char *);
 int		display(t_game *, t_pars *);
+void		create_box(int, int, int, int);
+void		create_box_sl(int, int, int, int);
 
 #endif /* !TETRIS_H_ */

@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Tue Feb 28 17:25:33 2017 Thibaut Cornolti
+## Last update Wed Mar  1 10:04:49 2017 Thibaut Cornolti
 ##
 
 SRC	=	tetris.c		\
@@ -17,6 +17,7 @@ SRC	=	tetris.c		\
 		tools.c			\
 		debug.c			\
 		display.c		\
+		drawer.c		\
 		tetrimino.c		\
 		check_tetrimino.c	\
 		set_rotated.c		\
