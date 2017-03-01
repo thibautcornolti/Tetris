@@ -5,16 +5,18 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Wed Mar  1 13:39:15 2017 Bastien
+** Last update Wed Mar  1 17:24:36 2017 Thibaut Cornolti
 */
+
+#include "tetris.h"
 
 int	check_loss(char **board)
 {
   int	i;
 
   i = -1;
-  while (tab && tab[0][++i])
-    if ((int)tab[0][i] > 0)
+  while (board && board[0][++i])
+    if ((int)board[0][i] > 0)
       return (0);
   return (1);
 }
@@ -39,7 +41,7 @@ void	init_board(char ***board)
   (*board)[pars->row] = NULL;
 }
 
-void	rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars;)
+void	rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
 {
   int	i;
 
@@ -74,7 +76,7 @@ void	falling_shapes(char **board, t_pos *pos)
   pos->y += 1;
 }
 
-void	game(t_shapes *shapes, t_pars *pars)
+void	game(t_shapes *shapes, t_pars *pars, t_game *g)
 {
   char	**board;
   t_pos	*pos;
@@ -89,7 +91,7 @@ void	game(t_shapes *shapes, t_pars *pars)
 	  if (action = get_action(pars))
 	    apply_action(action, board, pos, shapes);
 	  falling_shape(board, &shapes[pos->index], pos);
-	  display(board, pos, pars);
+	  display(board, pos, g, pars);
 	}
     }
   //TODO : Loss fct

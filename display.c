@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:12:32 2017 Thibaut Cornolti
-** Last update Wed Mar  1 11:22:14 2017 Thibaut Cornolti
+** Last update Wed Mar  1 17:19:02 2017 Thibaut Cornolti
 */
 
 #include <time.h>
@@ -77,7 +77,7 @@ static void	draw_stats(t_game *g)
 	   (m < 10) ? "0" : "", m, (s < 10) ? "0" : "", s);
 }
 
-int		display(t_game *g, t_pars *p)
+int		display(char **board, t_pos *pos, t_game *g, t_pars *p)
 {
   clear();
   if (!(COLS < 80 || LINES < 20))

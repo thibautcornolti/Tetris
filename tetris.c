@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Wed Mar  1 09:55:17 2017 Thibaut Cornolti
+** Last update Wed Mar  1 17:21:57 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
@@ -48,12 +48,7 @@ int			main(int ac, char **av)
     debug(&p, s);
   init_game(&g, &p);
   non_block(1, 0);
-  while (1)
-    {
-      if (display(&g, &p))
-	break;
-      usleep(100000);
-    }
+  game(s, &p, &g);
   endwin();
   non_block(0, 0);
   return (0);
