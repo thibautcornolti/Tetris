@@ -5,23 +5,25 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Wed Mar  1 17:24:36 2017 Thibaut Cornolti
+** Last update Wed Mar  1 17:38:41 2017 Bastien
 */
 
+#include <stdlib.h>
+#include <time.h>
 #include "tetris.h"
 
-int	check_loss(char **board)
+int	check_loss(char **tab)
 {
   int	i;
 
   i = -1;
-  while (board && board[0][++i])
-    if ((int)board[0][i] > 0)
+  while (tab && tab[0][++i])
+    if ((int)tab[0][i] > 0)
       return (0);
   return (1);
 }
 
-void	init_board(char ***board)
+void	init_board(char ***board, t_pars *pars)
 {
   int	i;
   int	j;
@@ -46,11 +48,11 @@ void	rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
   int	i;
 
   srand(time(NULL));
-  i = (int)rand()%my_shapeslen;
+  i = (int)rand()%my_shapeslen(shapes);
   while (shapes[i].map == NULL)
-    i = (int)rand()%my_shapeslen;
+    i = (int)rand()%my_shapeslen(shapes);
   pos->index = i;
-  pos->y = (pars->row - my_strlen(shapes[i])) / 2;
+  pos->y = (pars->row - my_strlen(shapes->map[i])) / 2;
   pos->x = 0;
   pos->orient = 0;
   pos->map = shapes[i].map;
@@ -76,22 +78,22 @@ void	falling_shapes(char **board, t_pos *pos)
   pos->y += 1;
 }
 
-void	game(t_shapes *shapes, t_pars *pars, t_game *g)
+void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 {
   char	**board;
   t_pos	*pos;
   int	action;
 
-  init_board(&board);
+  init_board(&board, pars);
   while (check_loss(board))
     {
       rand_next(pos, shapes, pars);
-      while (t_pos->index != -1)
+      while (pos->index != -1)
 	{
-	  if (action = get_action(pars))
+	  if ((action = get_action(pars)))
 	    apply_action(action, board, pos, shapes);
-	  falling_shape(board, &shapes[pos->index], pos);
-	  display(board, pos, g, pars);
+	  falling_shapes(board, pos);
+	  //	  display(board, pos, pars);
 	}
     }
   //TODO : Loss fct
