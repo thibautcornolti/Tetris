@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:08:20 2017 Thibaut Cornolti
-** Last update Wed Mar  1 09:54:31 2017 Thibaut Cornolti
+** Last update Wed Mar  1 11:00:22 2017 Bastien
 */
 
 #ifndef GAME_H_
@@ -26,6 +26,7 @@ typedef struct	s_pos
   int		x;
   int		y;
   int		index;
+  int		map;
 }		t_pos;
 
 void		init_game(t_game *, t_pars *);
