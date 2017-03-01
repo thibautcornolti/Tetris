@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 17:09:29 2017 Thibaut Cornolti
-** Last update Tue Feb 28 13:24:23 2017 Thibaut Cornolti
+** Last update Tue Feb 28 18:14:00 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
@@ -75,5 +75,6 @@ void		debug(t_pars *p, t_shapes *s)
   key_debug(p);
   tetri_debug(s);
   my_putstr("Press any key to start Tetris\n");
-  read(0, NULL, 1);
+  char *oui = malloc(200);
+  read(0, oui, 200);
 }

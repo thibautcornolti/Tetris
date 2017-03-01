@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Tue Feb 28 13:22:36 2017 Bastien
+** Last update Tue Feb 28 18:20:29 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -109,7 +109,8 @@ void		get_tetrimino(t_shapes **shapes)
 	    return ;
 	  add_shape(shapes, fd, file->d_name);
 	}
-      close(fd);
+      if (fd)
+	close(fd);
     }
   closedir(directory);
   sort_tetri(*shapes);

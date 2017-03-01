@@ -5,11 +5,34 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Tue Feb 28 17:23:18 2017 Thibaut Cornolti
+** Last update Tue Feb 28 19:26:40 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
+#include <sys/ioctl.h>
+#include <termios.h>
 #include "tetris.h"
+
+void		non_block(int act, int vtime)
+{
+  struct termios t;
+  static struct termios base;
+  static int oui = 1;
+
+  if (oui)
+    {
+      oui = 0;
+      tcgetattr (0, &base);      
+    }
+  tcgetattr (0, &t);
+  t.c_lflag &= ~(ECHO | ICANON | ISIG);
+  t.c_iflag = 0;
+  t.c_cc[VMIN] = 0;
+  t.c_cc[VTIME] = vtime;
+  tcsetattr(0, TCSAFLUSH, &t);
+  if (!act)
+    tcsetattr(0, TCSAFLUSH, &base);
+}
 
 int		main(int ac, char **av)
 {
@@ -20,9 +43,17 @@ int		main(int ac, char **av)
   (void) ac;
   my_super_parser(&p, av);
   get_tetrimino(&s);
+  non_block(1, -1);
   if (p.d)
     debug(&p, s);
   init_game(&g, &p);
-  display(&g);
+  non_block(1, 0);
+  while (1)
+    {
+      display(&g);
+      usleep(100000);
+    }
+  endwin();
+  non_block(0, 0);
   return (0);
 }
