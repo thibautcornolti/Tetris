@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:08:20 2017 Thibaut Cornolti
-** Last update Wed Mar  1 10:57:29 2017 Bastien
+** Last update Wed Mar  1 11:00:22 2017 Bastien
 */
 
 #ifndef GAME_H_
@@ -30,5 +30,6 @@ typedef struct	s_pos
 }		t_pos;
 
 void		init_game(t_game *, t_pars *);
+int		get_action(t_pars *);
 
 #endif /* !GAME_H_ */
