@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Tue Feb 28 18:33:06 2017 Bastien
+** Last update Wed Mar  1 13:39:15 2017 Bastien
 */
 
 int	check_loss(char **board)
@@ -50,20 +50,22 @@ void	rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars;)
   pos->index = i;
   pos->y = (pars->row - my_strlen(shapes[i])) / 2;
   pos->x = 0;
+  pos->orient = 0;
+  pos->map = shapes[i].map;
 }
 
-void	falling_shapes(char **board, t_shapes *piece, t_pos *pos)
+void	falling_shapes(char **board, t_pos *pos)
 {
   int	i;
   int	j;
 
 
   i = -1;
-  while (piece->map[++i])
+  while (pos->map[++i])
     {
       j = -1;
-      while (piece->map[i][++j])
-	if (piece->map[i][j] > 0 && board[pos->y + 1 + i][pos->x + j] > 0)
+      while (pos->map[i][++j])
+	if (pos->map[i][j] > 0 && board[pos->y + 1 + i][pos->x + j] > 0)
 	  {
 	    pos->index = -1;
 	    return ;
@@ -76,6 +78,7 @@ void	game(t_shapes *shapes, t_pars *pars)
 {
   char	**board;
   t_pos	*pos;
+  int	action;
 
   init_board(&board);
   while (check_loss(board))
@@ -83,8 +86,11 @@ void	game(t_shapes *shapes, t_pars *pars)
       rand_next(pos, shapes, pars);
       while (t_pos->index != -1)
 	{
+	  if (action = get_action(pars))
+	    apply_action(action, board, pos, shapes);
 	  falling_shape(board, &shapes[pos->index], pos);
-	  display(board, pos, shapes, pars);
+	  display(board, pos, pars);
 	}
     }
+  //TODO : Loss fct
 }
