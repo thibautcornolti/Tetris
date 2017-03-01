@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:27:16 2017 Thibaut Cornolti
-** Last update Mon Feb 27 14:13:35 2017 Thibaut Cornolti
+** Last update Wed Mar  1 09:34:34 2017 Thibaut Cornolti
 */
 
 #ifndef PARSER_H_
@@ -14,10 +14,10 @@
 #include <curses.h>
 
 # define DEF_L		"1"
-# define DEF_KL		"^[[D"
-# define DEF_KR		"^[[C"
-# define DEF_KT		"^[[A"
-# define DEF_KD		"^[[B"
+# define DEF_KL		"\033OD"
+# define DEF_KR		"\033OC"
+# define DEF_KT		"\033OA"
+# define DEF_KD		"\033OB"
 # define DEF_KQ		"q"
 # define DEF_KP		" "
 # define DEF_MAPSIZE	"20,10"

@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Tue Feb 28 19:26:40 2017 Thibaut Cornolti
+** Last update Wed Mar  1 09:11:11 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
@@ -50,7 +50,8 @@ int		main(int ac, char **av)
   non_block(1, 0);
   while (1)
     {
-      display(&g);
+      if (display(&g, &p))
+	break;
       usleep(100000);
     }
   endwin();

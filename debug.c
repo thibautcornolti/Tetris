@@ -5,11 +5,33 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 17:09:29 2017 Thibaut Cornolti
-** Last update Tue Feb 28 18:14:00 2017 Thibaut Cornolti
+** Last update Wed Mar  1 09:30:31 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
 #include "tetris.h"
+
+static char	*replace_esc(char *s)
+{
+  int		i;
+  int		j;
+  char		*res;
+
+  i = -1;
+  j = -1;
+  res = malloc(sizeof(char) * my_strlen(s) * 2);
+  while (s[++i])
+    {
+      res[++j] = s[i];
+      if (s[i] == 27)
+	{
+	  res[j] = '^';
+	  res[++j] = 'E';
+	}
+    }
+  res[++j] = 0;
+  return (res);
+}
 
 static void	print_debug(char *s)
 {
@@ -22,17 +44,17 @@ static void	print_debug(char *s)
 static void	key_debug(t_pars *p)
 {
   my_putstr("*** DEBUG MODE ***\nKey Left : ");
-  print_debug(p->kl);
+  print_debug(replace_esc(p->kl));
   my_putstr("\nKey Right : ");
-  print_debug(p->kr);
+  print_debug(replace_esc(p->kr));
   my_putstr("\nKey Turn : ");
-  print_debug(p->kt);
+  print_debug(replace_esc(p->kt));
   my_putstr("\nKey Drop : ");
-  print_debug(p->kd);
+  print_debug(replace_esc(p->kd));
   my_putstr("\nKey Quit : ");
-  print_debug(p->kq);
+  print_debug(replace_esc(p->kq));
   my_putstr("\nKey Pause : ");
-  print_debug(p->kp);
+  print_debug(replace_esc(p->kp));
   my_putstr("\nNext : ");
   my_putstr((p->w) ? "Yes" : "No");
   my_putstr("\nLevel : ");

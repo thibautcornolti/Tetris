@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Tue Feb 28 17:07:22 2017 Bastien
+** Last update Wed Mar  1 09:32:46 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
@@ -41,5 +41,6 @@ void		rotate_right(t_shapes *);
 void		get_tetrimino(t_shapes **);
 void		sort_tetri(t_shapes *);
 void		check_map(t_shapes *, char *);
+int		display(t_game *, t_pars *);
 
 #endif /* !TETRIS_H_ */
