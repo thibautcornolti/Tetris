@@ -1,11 +1,11 @@
 /*
-1;2802;0c** parser.h for tetris in /home/thibrex/Dropbox/delivery/PSU/PSU_2016_tetris
+** parser.h for tetris in /home/thibrex/Dropbox/delivery/PSU/PSU_2016_tetris
 ** 
 ** Made by Thibaut Cornolti
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:27:16 2017 Thibaut Cornolti
-** Last update Wed Mar  1 09:34:34 2017 Thibaut Cornolti
+** Last update Thu Mar  2 11:21:34 2017 Thibaut Cornolti
 */
 
 #ifndef PARSER_H_

@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 17:09:29 2017 Thibaut Cornolti
-** Last update Wed Mar  1 09:53:45 2017 Thibaut Cornolti
+** Last update Thu Mar  2 14:17:31 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
@@ -75,10 +75,15 @@ static void	tetri_debug(t_shapes *s)
   my_put_nbr(my_shapeslen(s));
   my_putstr("\n");
   i = -1;
-  while (s[++i].map)
+  while (s[++i].name)
     {
       my_putstr("Tetriminos : Name ");
       my_putstr(s[i].name);
+      if (!s[i].valide)
+	{
+	  my_putstr(" : Error\n");
+	  continue;
+	}
       my_putstr(" : Size ");
       my_put_nbr(s[i].width);
       my_putstr("*");

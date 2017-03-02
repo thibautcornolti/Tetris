@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:49:11 2017 Bastien
-** Last update Tue Feb 28 12:16:09 2017 Bastien
+** Last update Thu Mar  2 14:02:06 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -62,13 +62,13 @@ void		sort_tetri(t_shapes *shapes)
   i = -1;
   if (!shapes)
     return ;
-  while (shapes[++i].map)
+  while (shapes[++i].name)
     shapes[i].name[my_strlen(shapes[i].name) - 10] = 0;
   i = -1;
-  while (shapes[++i].map)
+  while (shapes[++i].name)
     {
       j = -1;
-      while (shapes[++j].map)
+      while (shapes[++j].name)
 	if (my_strcmp(shapes[i].name, shapes[j].name) < 0)
 	  {
 	    tmp = shapes[i];

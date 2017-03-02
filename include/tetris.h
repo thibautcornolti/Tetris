@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Wed Mar  1 17:19:30 2017 Thibaut Cornolti
+** Last update Thu Mar  2 13:46:23 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
@@ -22,6 +22,7 @@
 typedef struct	s_shapes
 {
   char		*name;
+  int		valide;
   int		width;
   int		height;
   int		color;
