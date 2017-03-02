@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Tue Feb 28 18:20:29 2017 Thibaut Cornolti
+** Last update Thu Mar  2 14:14:41 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -23,10 +23,10 @@ void		put_structab(t_shapes **shapes, t_shapes *piece, int size)
   i = (!*shapes) ? 0 : -1;
   if ((tab = malloc(sizeof(t_shapes) * (size + 1))) == NULL)
     return ;
-  while ((*shapes) && (*shapes)[++i].map)
+  while ((*shapes) && (*shapes)[++i].name)
     tab[i] = (*shapes)[i];
   tab[i] = *piece;
-  tab[i + 1].map = NULL;
+  tab[i + 1].name= NULL;
   free(*shapes);
   *shapes = tab;
 }
@@ -38,6 +38,9 @@ void	add_map(int fd, t_shapes *piece)
   char          *antileak;
 
   str = NULL;
+  piece->map = NULL;
+  if (piece->width == 0 && piece->height == 0 && piece->color == 0)
+    return ;
   while ((temp = get_next_line(fd)) != NULL)
     {
       antileak = my_strmcat(str, "@");
@@ -60,13 +63,12 @@ void	add_shape(t_shapes **shapes, int fd, char *name)
   if ((piece = malloc(sizeof(t_shapes))) == NULL)
     return ;
   if (get_size(piece, get_next_line(fd)))
-    {
-      while (get_next_line(fd));
-      return ;
-    }
+    while (get_next_line(fd));
   add_map(fd, piece);
   if (piece->map == NULL)
-    return ;
+    piece->valide = 0;
+  else
+    piece->valide = 1;
   rotate_right(piece);
   piece->name = my_strmcat(name, NULL);
   put_structab(shapes, piece, size);
@@ -101,12 +103,14 @@ void		get_tetrimino(t_shapes **shapes)
 
   *shapes = NULL;
   directory = opendir("./tetriminoes");
+  fd = 0;
   while ((file = readdir(directory)) != NULL)
     {
       if (check_name(file->d_name))
 	{
 	  if ((fd = open(my_strmcat("./tetriminoes/", file->d_name), O_RDONLY)) == -1)
 	    return ;
+	  printf("%s\n", file->d_name);
 	  add_shape(shapes, fd, file->d_name);
 	}
       if (fd)

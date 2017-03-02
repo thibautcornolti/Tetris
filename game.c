@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Thu Mar  2 14:34:50 2017 Bastien
+** Last update Thu Mar  2 14:40:06 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -48,9 +48,9 @@ void	rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
   int	i;
 
   srand(time(NULL));
-  i = (int)rand()%my_shapeslen(shapes);
-  while (shapes[i].map == NULL)
-    i = (int)rand()%my_shapeslen(shapes);
+  i = (int)rand() % my_shapeslen(shapes);
+  while (!shapes[i].valide || shapes[i].map == NULL)
+    i = (int)rand() % my_shapeslen(shapes);
   pos->index = i;
   pos->x = (pars->col - my_strlen(shapes->map[i])) / 2;
   pos->y = 0;
@@ -143,16 +143,17 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
   while (check_loss(board))
     {
       rand_next(&pos, shapes, pars);
-      /* printf("%d\n", pos.index); */
       while (pos.index != -1)
 	{
 	  /* printf("%d\n", pos.y); */
 	  if ((action = get_action(pars)))
 	    apply_action(action, board, &pos, shapes);
-	  /* printf("oui"); */
 	  falling_shapes(board, &pos);
 	  show_the_map(board);
 	  //	  display(board, pos, pars);
+	  usleep(100000);
+	  /* if (display(board, &pos, game, pars)) */
+	  /*   return; */
 	}
     }
   //TODO : Loss fct

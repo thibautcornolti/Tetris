@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 10:03:47 2017 Bastien
-** Last update Tue Feb 28 13:20:45 2017 Bastien
+** Last update Thu Mar  2 14:09:36 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -17,6 +17,9 @@ int	get_size(t_shapes *piece, char *first_line)
   int	i;
 
   i = -1;
+  piece->width = 0;
+  piece->height = 0;
+  piece->color = 0;
   while (first_line[++i])
     if ((first_line[i] < '0' || first_line[i] > '9') && first_line[i] != ' ')
       return (1);

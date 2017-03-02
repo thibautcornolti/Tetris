@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 27 19:09:51 2017 Thibaut Cornolti
-** Last update Wed Mar  1 10:14:43 2017 Thibaut Cornolti
+** Last update Thu Mar  2 14:15:18 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
@@ -17,7 +17,7 @@ int		my_shapeslen(t_shapes *s)
   int		i;
 
   i = -1;
-  while (s[++i].map);
+  while (s[++i].name);
   return (i);
 }
 

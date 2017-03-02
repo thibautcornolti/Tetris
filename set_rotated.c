@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Feb 23 21:45:45 2017 Bastien
-** Last update Mon Feb 27 18:50:03 2017 Thibaut Cornolti
+** Last update Thu Mar  2 14:05:37 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -74,6 +74,8 @@ void	rotate_right(t_shapes *piece)
 
   k = -1;
   v = 0;
+  if (piece->map == NULL)
+    return ;
   if ((piece->map_right = malloc(sizeof(char *) *
 				 (piece->width + 1))) == NULL)
     return ;
