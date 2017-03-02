@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Thu Mar  2 14:40:06 2017 Bastien
+** Last update Thu Mar  2 20:52:48 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -46,6 +46,8 @@ void	init_board(char ***board, t_pars *pars)
 void	rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
 {
   int	i;
+  int	j;
+  int	len;
 
   srand(time(NULL));
   i = (int)rand() % my_shapeslen(shapes);
@@ -55,7 +57,15 @@ void	rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
   pos->x = (pars->col - my_strlen(shapes->map[i])) / 2;
   pos->y = 0;
   pos->orient = 0;
-  pos->map = shapes[i].map;
+  j = -1;
+  len = -1;
+  while (shapes[i].map[++len]);
+  if ((pos->map = malloc(sizeof(char *) * (len + 1))) == NULL)
+    return ;
+  while (shapes[i].map[++j])
+    pos->map[j] = my_strdup(shapes[i].map[j]);
+  pos->map[j] = NULL;
+  replace_space(pos->map);
 }
 
 void	apply_map(char **board, t_pos *pos)
@@ -70,7 +80,7 @@ void	apply_map(char **board, t_pos *pos)
       while (pos->map[i][++j])
 	board[pos->y + i][pos->x + j] = pos->map[i][j];
     }
-  printf("oui\n");
+  //printf("oui\n");
   return ;  
 }
 
@@ -145,15 +155,12 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
       rand_next(&pos, shapes, pars);
       while (pos.index != -1)
 	{
-	  /* printf("%d\n", pos.y); */
 	  if ((action = get_action(pars)))
-	    apply_action(action, board, &pos, shapes);
+	    if (apply_action(action, board, &pos, shapes))
+	      return ;
 	  falling_shapes(board, &pos);
-	  show_the_map(board);
-	  //	  display(board, pos, pars);
-	  usleep(100000);
-	  /* if (display(board, &pos, game, pars)) */
-	  /*   return; */
+	  display(board, &pos, game, pars);
+	  usleep(500000);
 	}
     }
   //TODO : Loss fct

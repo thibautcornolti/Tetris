@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:08:20 2017 Thibaut Cornolti
-** Last update Wed Mar  1 17:41:02 2017 Bastien
+** Last update Thu Mar  2 20:39:31 2017 Thibaut Cornolti
 */
 
 #ifndef GAME_H_
@@ -36,7 +36,7 @@ typedef struct	s_pos
 void		init_game(t_game *, t_pars *);
 int		get_action(t_pars *);
 void		game(t_shapes *, t_pars *, t_game *);
-void		apply_action(int, char **, t_pos *, t_shapes *);
+int		apply_action(int, char **, t_pos *, t_shapes *);
 void		falling_shapes(char **, t_pos *);
 
 #endif /* !GAME_H_ */

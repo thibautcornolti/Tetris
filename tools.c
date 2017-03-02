@@ -5,12 +5,28 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 27 19:09:51 2017 Thibaut Cornolti
-** Last update Thu Mar  2 14:15:18 2017 Thibaut Cornolti
+** Last update Thu Mar  2 20:47:42 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
 #include <time.h>
 #include "tetris.h"
+
+char		**replace_space(char **map)
+{
+  int		i;
+  int		j;
+
+  i = -1;
+  while (map[++i])
+    {
+      j = -1;
+      while (map[i][++j])
+	if (map[i][j] == ' ')
+	  map[i][j] = -1;
+    }
+  return (map);
+}
 
 int		my_shapeslen(t_shapes *s)
 {

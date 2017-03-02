@@ -1,0 +1,17 @@
+yo bien dormi ? moi je dors encore,
+hier soir j'ai constaté que mon nakama a laissé
+quelques pièges dans le code, voilà ce que tu peux
+règler si tu te fais chier :
+
+  - Orientation fais SEGV
+
+  - Pièce qui disparraissent lorsque tu les entrechoquent
+
+  - Du coup parfois ça fais une partie infini puisque les pièces
+    du haut disparaissent
+
+  - Le t_pos->color renvoie toujours 15 ?
+
+git log pour voir ce que j'ai modif hier
+
+++ et a 15h !

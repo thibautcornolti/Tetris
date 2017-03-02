@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Thu Mar  2 13:46:23 2017 Thibaut Cornolti
+** Last update Thu Mar  2 20:47:32 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
@@ -48,5 +48,6 @@ void		draw_title_te(char *, int);
 void		create_box(int, int, int, int);
 void		create_box_sl(int, int, int, int);
 int		get_action(t_pars *);
+char		**replace_space(char **);
 
 #endif /* !TETRIS_H_ */

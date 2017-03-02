@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Thu Mar  2 14:14:41 2017 Thibaut Cornolti
+** Last update Thu Mar  2 20:43:24 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -40,7 +40,10 @@ void	add_map(int fd, t_shapes *piece)
   str = NULL;
   piece->map = NULL;
   if (piece->width == 0 && piece->height == 0 && piece->color == 0)
-    return ;
+    {
+      while (get_next_line(fd));
+      return ;
+    }
   while ((temp = get_next_line(fd)) != NULL)
     {
       antileak = my_strmcat(str, "@");
@@ -110,7 +113,7 @@ void		get_tetrimino(t_shapes **shapes)
 	{
 	  if ((fd = open(my_strmcat("./tetriminoes/", file->d_name), O_RDONLY)) == -1)
 	    return ;
-	  printf("%s\n", file->d_name);
+	  //printf("%s\n", file->d_name);
 	  add_shape(shapes, fd, file->d_name);
 	}
       if (fd)
