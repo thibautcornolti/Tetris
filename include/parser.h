@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:27:16 2017 Thibaut Cornolti
-** Last update Thu Mar  2 11:21:34 2017 Thibaut Cornolti
+** Last update Mon Mar  6 14:23:56 2017 Thibaut Cornolti
 */
 
 #ifndef PARSER_H_
@@ -62,6 +62,6 @@ void		set_pars(t_pre_pars *, t_pars *);
 int		contains_tab(char *, char **);
 int		contains_char(char *, char);
 char		*spe_pure(char *);
-int		my_help();
+int		my_help(char *);
 
 #endif /* !PARSER_H_ */

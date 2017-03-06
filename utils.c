@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:49:11 2017 Bastien
-** Last update Thu Mar  2 14:02:06 2017 Thibaut Cornolti
+** Last update Mon Mar  6 14:27:22 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -78,26 +78,28 @@ void		sort_tetri(t_shapes *shapes)
     }
 }
 
-int		my_help()
+int		my_help(char *name)
 {
-  my_putstr("Usage: ./tetris [options]\nOptions:\n");
-  my_putstr("\t--help\t\t\tDisplay this help\n\t-l --level");
+  my_putstr("Usage: ");
+  my_putstr(name);
+  my_putstr(" [options]\nOptions:\n");
+  my_putstr("  --help\t\tDisplay this help\n  -l --level");
   my_putstr("={num}\tStart Tetris at level num (def: 1)\n");
-  my_putstr("\t-kl --key-left={K}\tMove the tetrimino");
+  my_putstr("  -kl --key-left={K}\tMove the tetrimino");
   my_putstr("LEFT using the K key (def: left arrow)\n");
-  my_putstr("\t-kr --key-right={K}\tMove the tetrimino");
+  my_putstr("  -kr --key-right={K}\tMove the tetrimino");
   my_putstr("RIGHT using the K key (def: right arrow)\n");
-  my_putstr("\t-kt --key-turn={K}\tTURN the tetrimino");
+  my_putstr("  -kt --key-turn={K}\tTURN the tetrimino");
   my_putstr("clockwise 90d using the K key (def: top arrow)\n");
-  my_putstr("\t-kd --key-down={K}\tDROP the tetrimino");
+  my_putstr("  -kd --key-down={K}\tDROP the tetrimino");
   my_putstr("using the K key (def: down arrow)\n");
-  my_putstr("\t-kq --key-quit={K}\tQUIT the tetrimino");
+  my_putstr("  -kq --key-quit={K}\tQUIT the tetrimino");
   my_putstr("using the K key (def: 'Q' key)\n");
-  my_putstr("\t-kp --key-drop={K}\tPAUSE/RESTART the game");
+  my_putstr("  -kp --key-drop={K}\tPAUSE/RESTART the game");
   my_putstr("using the K key (def: space bar)\n");
-  my_putstr("\t--map-size={row,col}\tSet the numbers of ");
+  my_putstr("  --map-size={row,col}\tSet the numbers of ");
   my_putstr("rows and columns of the map (def: 20,10)\n");
-  my_putstr("\t-w --without-next\tHide next tetrimino (def: ");
-  my_putstr("false)\n\t-d --debug\t\tDebug mode (def: false)\n");
+  my_putstr("  -w --without-next\tHide next tetrimino (def: ");
+  my_putstr("false)\n  -d --debug\t\tDebug mode (def: false)\n");
   exit(0);
 }

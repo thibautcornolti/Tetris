@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:26:06 2017 Thibaut Cornolti
-** Last update Tue Feb 28 16:39:55 2017 Thibaut Cornolti
+** Last update Mon Mar  6 14:23:44 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
@@ -68,7 +68,7 @@ static int	fill_arg(t_pre_pars *p, char **av, int i)
   if (!my_strcmp(arg, "d") || !my_strcmp(arg, "-debug"))
     return (0 * (long) (p->d = "true"));
   else if (!my_strcmp(arg, "-help"))
-    return (my_help());
+    return (my_help(av[0]));
   else if (!my_strncmp(av[i], "--", 2))
     return (fill_arg_max(p, my_strsplit(arg + 1, '=')));
   else
