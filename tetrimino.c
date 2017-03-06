@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Thu Mar  2 20:43:24 2017 Thibaut Cornolti
+** Last update Mon Mar  6 18:01:00 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -105,13 +105,13 @@ void		get_tetrimino(t_shapes **shapes)
   int		fd;
 
   *shapes = NULL;
-  directory = opendir("./tetriminoes");
+  directory = opendir("./tetriminos");
   fd = 0;
   while ((file = readdir(directory)) != NULL)
     {
       if (check_name(file->d_name))
 	{
-	  if ((fd = open(my_strmcat("./tetriminoes/", file->d_name), O_RDONLY)) == -1)
+	  if ((fd = open(my_strmcat("./tetriminos/", file->d_name), O_RDONLY)) == -1)
 	    return ;
 	  //printf("%s\n", file->d_name);
 	  add_shape(shapes, fd, file->d_name);
