@@ -5,11 +5,12 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Tue Mar  7 14:16:41 2017 Bastien
+** Last update Tue Mar  7 15:14:34 2017 Bastien
 */
 
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include "tetris.h"
 
 int	check_loss(char **tab)
@@ -46,8 +47,6 @@ void	init_board(char ***board, t_pars *pars)
 void	rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
 {
   int	i;
-  int	j;
-  int	len;
 
   srand(time(NULL));
   i = (int)rand() % my_shapeslen(shapes);
@@ -57,15 +56,8 @@ void	rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
   pos->x = (pars->col - my_strlen(shapes->map[i])) / 2;
   pos->y = 0;
   pos->orient = 0;
-  j = -1;
-  len = -1;
-  while (shapes[i].map[++len]);
-  if ((pos->map = malloc(sizeof(char *) * (len + 1))) == NULL)
-    return ;
-  while (shapes[i].map[++j])
-    pos->map[j] = my_strdup(shapes[i].map[j]);
-  pos->map[j] = NULL;
-  replace_space(pos->map);
+  pos->map = shapes[i].map;
+  pos->color = shapes[i].color;
 }
 
 void	apply_map(char **board, t_pos *pos)
@@ -133,6 +125,7 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
   int	action;
 
   init_board(&board, pars);
+  memset(&pos, 0, sizeof(t_pos));
   while (check_loss(board))
     {
       rand_next(&pos, shapes, pars);
@@ -143,7 +136,7 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 	      return ;
 	  falling_shapes(board, &pos);
 	  display(board, &pos, game, pars);
-	  usleep(1000000);
+	  usleep(100000);
 	}
     }
   //TODO : Loss fct

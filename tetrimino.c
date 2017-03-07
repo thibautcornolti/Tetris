@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Mon Mar  6 18:01:00 2017 Thibaut Cornolti
+** Last update Tue Mar  7 15:23:02 2017 Bastien
 */
 
 #include <sys/types.h>
@@ -73,6 +73,13 @@ void	add_shape(t_shapes **shapes, int fd, char *name)
   else
     piece->valide = 1;
   rotate_right(piece);
+  if (piece->map)
+    {
+      replace_space(piece->map);
+      replace_space(piece->map_right);
+      replace_space(piece->map_down);
+      replace_space(piece->map_left);
+    }
   piece->name = my_strmcat(name, NULL);
   put_structab(shapes, piece, size);
   size += 1;
