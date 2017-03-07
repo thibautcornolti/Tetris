@@ -5,9 +5,10 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Mar  7 18:30:07 2017 Bastien
-** Last update Tue Mar  7 18:51:39 2017 Bastien
+** Last update Tue Mar  7 18:58:53 2017 Bastien
 */
 
+#include <unistd.h>
 #include "my.h"
 
 int	remove_line(char **board, int i)
@@ -36,9 +37,9 @@ int     check_fulline(char **board)
   int	x;
 
   i = -1;
-  x = 0;
   while (board[++i])
     {
+      x = 0;
       j = -1;
       while (board[i][++j] && x == 0)
 	if (board[i][j] == -1)

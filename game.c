@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Tue Mar  7 18:44:33 2017 Bastien
+** Last update Tue Mar  7 18:59:39 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -120,7 +120,7 @@ void	falling_shapes(char **board, t_pos *pos)
 
 void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 {
-   char	**board;
+  char	**board;
   t_pos	pos;
   int	action;
 
@@ -138,7 +138,7 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 	  display(board, &pos, game, pars);
 	  while (check_fulline(board))
 	    display(board, &pos, game, pars);
-	  usleep(100000);
+	  usleep(200000);
 	}
     }
   //TODO : Loss fct
