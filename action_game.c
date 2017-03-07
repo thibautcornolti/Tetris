@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Wed Mar  1 11:06:23 2017 Bastien
-** Last update Thu Mar  2 21:13:25 2017 Thibaut Cornolti
+** Last update Tue Mar  7 14:15:55 2017 Bastien
 */
 
 #include "tetris.h"
@@ -14,29 +14,46 @@ void   	can_rotate(t_shapes *shapes, t_pos *pos, char **board)
 {
   char	**tab;
   int	i;
+  int	j;
 
-  my_puterror("\nINDEX:");
-  my_puterror(my_int_to_str(pos->index, NULL));
-  my_puterror("\nORIENT:");
-  my_puterror(my_int_to_str(pos->orient, NULL));
-  my_puterror("\n");
-  i = pos->index;
   tab = pos->map;
   pos->map = (pos->orient == 0) ? shapes->map_right : pos->map;
   pos->map = (pos->orient == 1) ? shapes->map_down : pos->map;
   pos->map = (pos->orient == 2) ? shapes->map_left : pos->map;
   pos->map = (pos->orient == 3) ? shapes->map : pos->map;
-  falling_shapes(board, pos);
-  pos->map = tab;
-  if (i != pos->index)
+  i = -1;
+  if ((my_strlen(pos->map[0]) + pos->x > my_strlen(board[0]))
+      || (my_tablen(pos->map) + pos->y > my_tablen(board)))
     {
       pos->map = tab;
-      pos->index = i;
+      return ;
     }
-  else
-    pos->y -= 1;
-  pos->index = ((pos->orient + 1) % 4 == 0) ? 0 : pos->index + 1;
+  while (pos->map[++i])
+    {
+      j = -1;
+      while (pos->map[i][++j])
+	if (board[pos->y + i][pos->x + j] > 0 && pos->map[i][j] > 0)
+	  {
+	    pos->map = tab;
+	    return ;
+	  } 
+    }
+  pos->orient = ((pos->orient + 1) % 4 == 0) ? 0 : pos->orient + 1;
 }
+
+
+
+  
+/*   pos->map = tab; */
+/*   if (i != pos->index) */
+/*     { */
+/*       pos->map = tab; */
+/*       pos->index = i; */
+/*     } */
+/*   else */
+/*     pos->y -= 1; */
+/*   pos->index = ((pos->orient + 1) % 4 == 0) ? 0 : pos->index + 1; */
+/* } */
 
 int	apply_action(int action, char **board, t_pos *pos, t_shapes *shapes)
 {

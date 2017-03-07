@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 10:03:47 2017 Bastien
-** Last update Thu Mar  2 14:09:36 2017 Thibaut Cornolti
+** Last update Tue Mar  7 13:55:00 2017 Bastien
 */
 
 #include <unistd.h>
@@ -52,4 +52,7 @@ void	check_map(t_shapes *piece, char *str)
 	 && my_strlen(piece->map[i]) != piece->width);
   if (piece->map && piece->map[i] == NULL)
     piece->map = NULL;
+  i = -1;
+  while (str[++i])
+    str[i] = (str[i] == ' ') ? -1 : piece->color;
 }

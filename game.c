@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Thu Mar  2 20:52:48 2017 Thibaut Cornolti
+** Last update Tue Mar  7 14:16:41 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -78,9 +78,10 @@ void	apply_map(char **board, t_pos *pos)
     {
       j = -1;
       while (pos->map[i][++j])
-	board[pos->y + i][pos->x + j] = pos->map[i][j];
+	if (pos->map[i][j] != -1)
+	  board[pos->y + i][pos->x + j] = pos->map[i][j];
     }
-  //printf("oui\n");
+
   return ;  
 }
 
@@ -93,54 +94,36 @@ void	check_hit(char **board, t_pos *pos)
   if (pos->index == -1)
     return ;
   i = -1;
-  j = -1;
-  while (pos->map[++i]);
-  i -= 1;
-  while (pos->map[i][++j])
-    if (board[pos->y + i + 1][pos->x + j] > 0 && pos->map[i][j] > 0)
-      {
-	apply_map(board, pos);
-	pos->index = -1;
-      }
+  while (pos->map[++i])
+    {
+      j = -1;
+      while (pos->map[i][++j])
+	if (board[pos->y + i + 1][pos->x + j] > 0 && pos->map[i][j] > 0)
+	  {
+	    apply_map(board, pos);
+	    pos->index = -1;
+	  }
+    }
 }
 
 void	falling_shapes(char **board, t_pos *pos)
 {
   int	i;
-  int	j;
 
   i = -1;
   pos->index = (my_strlen(pos->map[0]) + pos->x >
 		my_strlen(board[0])) ? -1 : pos->index;
   pos->index = (my_tablen(pos->map) + pos->y >
 		my_tablen(board)) ? -1 : pos->index;
-  while (pos->index != -1 && pos->map[++i])
+  while (pos->index != -1 && pos->map[++i + 1]);
+  if (!board[pos->y + i + 1] && !pos->map[i + 1])
     {
-      j = -1;
-      while (pos->index != -1 && pos->map[i][++j])
-	{
-	  if (!board[pos->y + i + 1] && !pos->map[i + 1])
-	    {
-	      apply_map(board, pos);
-	      pos->index = -1;
-	    }
-	  else if (pos->map[i][j] > 0 && board[pos->y + i][pos->x + j] > 0)
-	    pos->index = -1;
-	}
+      apply_map(board, pos);
+      pos->index = -1;
     }
-  check_hit(board, pos);
   if (pos->index != -1)
-    pos->y += 1;
-}
-
-void	show_the_map(char **board)
-{
-  int	i;
-
-  i = -1;
-  while (board[++i])
-    printf("%s\n", board[i]);
-  printf("%s", "\n\n");
+    check_hit(board, pos);
+  pos->y = (pos->index == -1) ? pos->y : pos->y + 1;
 }
 
 void	game(t_shapes *shapes, t_pars *pars, t_game *game)
@@ -160,7 +143,7 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 	      return ;
 	  falling_shapes(board, &pos);
 	  display(board, &pos, game, pars);
-	  usleep(500000);
+	  usleep(1000000);
 	}
     }
   //TODO : Loss fct
