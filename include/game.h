@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:08:20 2017 Thibaut Cornolti
-** Last update Thu Mar  2 20:39:31 2017 Thibaut Cornolti
+** Last update Tue Mar  7 18:41:33 2017 Bastien
 */
 
 #ifndef GAME_H_
@@ -38,5 +38,6 @@ int		get_action(t_pars *);
 void		game(t_shapes *, t_pars *, t_game *);
 int		apply_action(int, char **, t_pos *, t_shapes *);
 void		falling_shapes(char **, t_pos *);
+int		check_fulline(char **);
 
 #endif /* !GAME_H_ */

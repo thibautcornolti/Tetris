@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Tue Mar  7 15:23:02 2017 Bastien
+** Last update Tue Mar  7 17:31:16 2017 Bastien
 */
 
 #include <sys/types.h>
@@ -120,7 +120,6 @@ void		get_tetrimino(t_shapes **shapes)
 	{
 	  if ((fd = open(my_strmcat("./tetriminos/", file->d_name), O_RDONLY)) == -1)
 	    return ;
-	  //printf("%s\n", file->d_name);
 	  add_shape(shapes, fd, file->d_name);
 	}
       if (fd)

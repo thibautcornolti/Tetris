@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Wed Mar  1 17:21:09 2017 Thibaut Cornolti
+## Last update Tue Mar  7 18:41:08 2017 Bastien
 ##
 
 SRC	=	tetris.c		\
@@ -24,6 +24,7 @@ SRC	=	tetris.c		\
 		set_rotated.c		\
 		game.c			\
 		action_game.c		\
+		remove_line.c
 
 OBJS	=	$(SRCS:.c=.o)
 
