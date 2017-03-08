@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Mar  7 18:30:07 2017 Bastien
-** Last update Tue Mar  7 18:58:53 2017 Bastien
+** Last update Wed Mar  8 15:24:22 2017 Bastien
 */
 
 #include <unistd.h>
@@ -26,7 +26,7 @@ int	remove_line(char **board, int i)
   x = -1;
   while(board[0][++x])
     board[0][x] = -1;
-  usleep(10000);
+  usleep(100000);
   return (1);
 }
 

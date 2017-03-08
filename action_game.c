@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Wed Mar  1 11:06:23 2017 Bastien
-** Last update Wed Mar  8 14:29:29 2017 Bastien
+** Last update Wed Mar  8 15:23:06 2017 Bastien
 */
 
 #include "tetris.h"
@@ -15,10 +15,9 @@ int	can_dash(t_pos *pos, char **board, int d)
   int	i;
   int	j;
 
-  if ((my_strlen(pos->map[0]) + pos->x > my_strlen(board[0]))
-      || (my_tablen(pos->map) + pos->y > my_tablen(board)))
-    return (0);
   i = -1;
+  /* if (my_strlen(pos->map[0]) >= my_strlen(board[0]) + d) */
+  /*   return (0); */
   while (pos->map[++i])
     {
       j = -1;
@@ -64,8 +63,8 @@ int	apply_action(int action, char **board, t_pos *pos, t_shapes *shapes)
 {
   if (action == 1 && pos->x > 0 && can_dash(pos, board, -1))
     pos->x -= 1;
-  else if (action == 2 && pos->x + my_strlen(shapes->map[0]) <
-	   my_strlen(board[0]) && can_dash(pos, board, 1))
+  else if (action == 2 && pos->x + my_strlen(pos->map[0]) < my_strlen(board[0])
+	   && can_dash(pos, board, 1))
     pos->x += 1;
   else if (action == 3)
     can_rotate(&shapes[pos->index], pos, board);
