@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Tue Mar  7 17:31:16 2017 Bastien
+** Last update Tue Mar  7 23:26:56 2017 Bastien
 */
 
 #include <sys/types.h>
@@ -57,6 +57,7 @@ void	add_map(int fd, t_shapes *piece)
   check_map(piece, str);
   free(str);
 }
+
 
 void	add_shape(t_shapes **shapes, int fd, char *name)
 {
