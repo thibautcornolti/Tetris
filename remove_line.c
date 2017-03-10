@@ -5,10 +5,11 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Mar  7 18:30:07 2017 Bastien
-** Last update Wed Mar  8 15:24:22 2017 Bastien
+** Last update Fri Mar 10 12:37:37 2017 Bastien
 */
 
 #include <unistd.h>
+#include "game.h"
 #include "my.h"
 
 int	remove_line(char **board, int i)
@@ -30,7 +31,7 @@ int	remove_line(char **board, int i)
   return (1);
 }
 
-int     check_fulline(char **board)
+int     check_fulline(char **board, t_game *game)
 {
   int   i;
   int   j;
@@ -45,7 +46,10 @@ int     check_fulline(char **board)
 	if (board[i][j] == -1)
 	  ++x;
       if (j == my_strlen(board[0]))
-	return (remove_line(board, i));
+	{
+	  game->score += game->level*100;
+	  return (remove_line(board, i));
+	}
     }
   return (0);
 }

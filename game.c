@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Wed Mar  8 17:38:49 2017 Bastien
+** Last update Fri Mar 10 12:33:12 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -139,15 +139,15 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 		return ;
 	      display(board, &pos, game, pars);
 	    }
-	  if (!ftime(&tp) && tp.millitm == 500)
+	  if (!ftime(&tp) && !(tp.millitm%200))
 	    {
 	      falling_shapes(board, &pos);
 	      display(board, &pos, game, pars);
 	      usleep(1000);
 	    }
-	  while (check_fulline(board))
+	  while (check_fulline(board, game))
 	    display(board, &pos, game, pars);
 	}
     }
-  //TODO : Loss fct
+  // TODO : Loss fct
 }
