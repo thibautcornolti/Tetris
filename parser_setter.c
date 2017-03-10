@@ -5,15 +5,15 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 16:18:31 2017 Thibaut Cornolti
-** Last update Wed Mar  8 12:29:19 2017 Thibaut Cornolti
+** Last update Fri Mar 10 11:29:41 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
 
 void		init_pars(t_pre_pars *p)
 {
+  my_setupterm();
   p->l = DEF_L;
-  setupterm(NULL, 0, 0);
   if (!(p->kl = tigetstr(DEF_KL)))
     p->kl = "q";
   if (!(p->kr = tigetstr(DEF_KR)))
