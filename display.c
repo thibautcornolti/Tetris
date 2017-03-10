@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:12:32 2017 Thibaut Cornolti
-** Last update Fri Mar 10 11:25:08 2017 Thibaut Cornolti
+** Last update Fri Mar 10 12:33:34 2017 Thibaut Cornolti
 */
 
 #include <time.h>
@@ -29,6 +29,7 @@ static void	draw_shape(t_pos *pos, t_pars *p)
   int		i;
   int		j;
 
+  i = -1;
   attron(COLOR_PAIR(pos->color % 7 + 8));
   while (pos->map[++i])
     {
@@ -36,7 +37,8 @@ static void	draw_shape(t_pos *pos, t_pars *p)
       while (pos->map[i][++j])
 	if (pos->map[i][j] != -1)
 	  mvprintw(16 + pos->y + i, p->col / 2 + 33 + pos->x + j, "*");
-    }  
+    }
+  attroff(COLOR_PAIR(pos->color % 7 + 8));
 }
 
 static void	draw_board(t_pos *pos, t_pars *p, char **board)
@@ -54,15 +56,14 @@ static void	draw_board(t_pos *pos, t_pars *p, char **board)
 	mvprintw(16 + i, p->col / 2 + 33 + j, (board[i][j] == -1) ? " " : "*");
     }
   draw_shape(pos, p);
-  attroff(COLOR_PAIR(pos->color % 7 + 8));
 }
 
 int		display(char **board, t_pos *pos, t_game *g, t_pars *p)
 {
   clear();
-  if (!(COLS < 80 || LINES < 20))
+  if (COLS > 80 && LINES > 25 && LINES - 16 > p->row)
     {
-      draw_stats(g);
+      draw_stats(g, p);
       draw_title(pos, p);
       draw_board(pos, p, board);
     }
