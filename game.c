@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Fri Mar 10 12:33:12 2017 Bastien
+** Last update Fri Mar 10 12:45:37 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -71,8 +71,9 @@ void	apply_map(char **board, t_pos *pos)
     {
       j = -1;
       while (pos->map[i][++j])
-	if (pos->map[i][j] != -1)
-	  board[pos->y + i][pos->x + j] = pos->map[i][j];
+	board[pos->y + i][pos->x + j] = (pos->map[i][j] == -1) ? -1 : pos->color;
+	 
+      
     }
 
   return ;  
