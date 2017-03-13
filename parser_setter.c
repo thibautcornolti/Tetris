@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 16:18:31 2017 Thibaut Cornolti
-** Last update Fri Mar 10 11:29:41 2017 Thibaut Cornolti
+** Last update Mon Mar 13 14:12:35 2017 Thibaut Cornolti
 */
 
 #include "tetris.h"
@@ -14,13 +14,13 @@ void		init_pars(t_pre_pars *p)
 {
   my_setupterm();
   p->l = DEF_L;
-  if (!(p->kl = tigetstr(DEF_KL)))
-    p->kl = "q";
-  if (!(p->kr = tigetstr(DEF_KR)))
+  if ((long) (p->kl = tigetstr(DEF_KL)) <= 0)
+    p->kl = "a";
+  if ((long) (p->kr = tigetstr(DEF_KR)) <= 0)
     p->kr = "d";
-  if (!(p->kt = tigetstr(DEF_KT)))
-    p->kt = "z";
-  if (!(p->kd = tigetstr(DEF_KD)))
+  if ((long) (p->kt = tigetstr(DEF_KT)) <= 0)
+    p->kt = "w";
+  if ((long) (p->kd = tigetstr(DEF_KD)) <= 0)
     p->kd = "s";
   endwin();
   p->kq = DEF_KQ;

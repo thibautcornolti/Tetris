@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Tue Mar  7 23:26:56 2017 Bastien
+** Last update Mon Mar 13 14:09:38 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -46,6 +46,7 @@ void	add_map(int fd, t_shapes *piece)
     }
   while ((temp = get_next_line(fd)) != NULL)
     {
+      del_final_space(temp);
       antileak = my_strmcat(str, "@");
       free(str);
       temp = fill_str(temp, piece->width);
