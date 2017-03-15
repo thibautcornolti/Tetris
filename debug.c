@@ -5,9 +5,10 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 17:09:29 2017 Thibaut Cornolti
-** Last update Wed Mar  8 20:10:55 2017 Thibaut Cornolti
+** Last update Wed Mar 15 13:20:54 2017 Thibaut Cornolti
 */
 
+#include <stdlib.h>
 #include <ncurses.h>
 #include "tetris.h"
 

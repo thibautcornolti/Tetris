@@ -5,9 +5,10 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 27 19:09:51 2017 Thibaut Cornolti
-** Last update Tue Mar  7 15:23:12 2017 Bastien
+** Last update Wed Mar 15 13:21:29 2017 Thibaut Cornolti
 */
 
+#include <stdlib.h>
 #include <ncurses.h>
 #include <time.h>
 #include "tetris.h"
@@ -55,6 +56,8 @@ void		init_game(t_game *g, t_pars *p)
   g->level = p->l;
   g->timer = 0;
   g->start_time = time(NULL);
+  g->pause.paused = 0;
+  g->pause.duration = 0;
   initscr();
   noecho();
   cbreak();

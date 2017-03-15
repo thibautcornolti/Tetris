@@ -5,7 +5,7 @@
 ** Login   <thibrex@epitech.net>
 ** 
 ** Started on  Fri Oct  7 17:44:58 2016 Cornolti Thibaut
-** Last update Sun Nov  6 21:34:07 2016 Thibaut Cornolti
+** Last update Mon Mar 13 14:16:16 2017 Thibaut Cornolti
 */
 
 static int	my_sqrt(int nb)
@@ -15,7 +15,7 @@ static int	my_sqrt(int nb)
   sqrt = nb;
   while (sqrt * sqrt > nb || sqrt != sqrt * sqrt / sqrt)
       sqrt /= 2;
-  return (sqrt*2);
+  return (sqrt * 2);
 }
 
 int	my_is_prime(int nb)

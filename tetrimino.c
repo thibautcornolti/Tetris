@@ -5,9 +5,10 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Mon Mar 13 14:09:38 2017 Thibaut Cornolti
+** Last update Wed Mar 15 13:20:59 2017 Thibaut Cornolti
 */
 
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <dirent.h>

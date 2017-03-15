@@ -5,16 +5,12 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Mon Mar 13 14:11:29 2017 Thibaut Cornolti
+** Last update Wed Mar 15 13:32:17 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
 # define TETRIS_H_
 
-#include <stdio.h>
-#include <sys/types.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "parser.h"
 #include "game.h"
 #include "my.h"
@@ -53,5 +49,6 @@ void		create_box_sl(int, int, int, int);
 int		get_action(t_pars *);
 void		replace_space(char **);
 void		del_final_space(char *);
+int		my_pause(t_game *, int);
 
 #endif /* !TETRIS_H_ */

@@ -5,9 +5,10 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:12:32 2017 Thibaut Cornolti
-** Last update Fri Mar 10 13:09:50 2017 Thibaut Cornolti
+** Last update Wed Mar 15 13:21:11 2017 Thibaut Cornolti
 */
 
+#include <stdlib.h>
 #include <time.h>
 #include <sys/types.h>
 #include <fcntl.h>

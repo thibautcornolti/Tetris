@@ -5,9 +5,11 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 10 11:19:37 2017 Thibaut Cornolti
-** Last update Fri Mar 10 13:24:08 2017 Thibaut Cornolti
+** Last update Wed Mar 15 13:32:36 2017 Thibaut Cornolti
 */
 
+#include <unistd.h>
+#include <stdlib.h>
 #include <time.h>
 #include <sys/types.h>
 #include <fcntl.h>
@@ -37,13 +39,23 @@ void		draw_title()
   close(fd);
 }
 
+static int	calc_time(t_game *g)
+{
+  int		t;
+
+  t = time(NULL) - g->start_time - g->pause.duration;
+  if (g->pause.paused)
+    t -= time(NULL) - g->pause.start_time;
+  return (t);
+}
+
 void		draw_stats(t_game *g, t_pars *p)
 {
   int		m;
   int		s;
 
-  m = (time(NULL) - g->start_time) / 60;
-  s = (time(NULL) - g->start_time) % 60;
+  m = calc_time(g) / 60;
+  s = calc_time(g) % 60;
   create_box_sl(15, 3, 11, 28);
   mvprintw(15 + 2, 5, "High Score");
   mvprintw(15 + 2, 29 - my_intlen(g->high_score), "%d", g->high_score);

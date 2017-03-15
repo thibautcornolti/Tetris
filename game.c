@@ -5,9 +5,10 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Fri Mar 10 13:06:34 2017 Bastien
+** Last update Wed Mar 15 13:27:35 2017 Thibaut Cornolti
 */
 
+#include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
@@ -134,11 +135,12 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 	{
 	  if ((action = get_action(pars)))
 	    {
-	      if (apply_action(action, board, &pos, shapes))
-		return ;
+	      if (my_pause(game, action))
+		if (apply_action(action, board, &pos, shapes))
+		  return ;
 	      display(board, &pos, game, pars);
 	    }
-	  if (!ftime(&tp) && !(tp.millitm%200))
+	  if (!ftime(&tp) && !(tp.millitm%200) && !game->pause.paused)
 	    {
 	      falling_shapes(board, &pos);
 	      display(board, &pos, game, pars);

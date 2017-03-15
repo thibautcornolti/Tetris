@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:08:20 2017 Thibaut Cornolti
-** Last update Fri Mar 10 12:37:26 2017 Bastien
+** Last update Wed Mar 15 13:15:45 2017 Thibaut Cornolti
 */
 
 #ifndef GAME_H_
@@ -13,6 +13,13 @@
 
 typedef struct	s_shapes t_shapes;
 typedef struct	s_pars t_pars;
+
+typedef struct	s_pause
+{
+  int		paused;
+  int		duration;
+  int		start_time;
+}		t_pause;
 
 typedef struct	s_game
 {
@@ -22,6 +29,7 @@ typedef struct	s_game
   int		level;
   int		timer;
   int		start_time;
+  t_pause	pause;
 }		t_game;
 
 typedef struct	s_pos

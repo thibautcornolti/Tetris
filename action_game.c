@@ -5,9 +5,10 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Wed Mar  1 11:06:23 2017 Bastien
-** Last update Wed Mar  8 16:35:08 2017 Bastien
+** Last update Wed Mar 15 13:31:40 2017 Thibaut Cornolti
 */
 
+#include <unistd.h>
 #include "tetris.h"
 
 int	can_dash(t_pos *pos, char **board, int d)
@@ -72,26 +73,25 @@ int	apply_action(int action, char **board, t_pos *pos, t_shapes *shapes)
     falling_shapes(board, pos);
   else if (action == 5)
     return (1);
-  else if (action == 6); //TODO : Pause fct
   return (0);
 }
 
-  int		get_action(t_pars *p)
-  {
-    char		buff[201];
+int		get_action(t_pars *p)
+{
+  char		buff[201];
 
-    buff[read(0, buff, 199)] = 0;
-    if (my_strstr(buff, p->kl))
-      return (1);
-    if (my_strstr(buff, p->kr))
-      return (2);
-    if (my_strstr(buff, p->kt))
-      return (3);
-    if (my_strstr(buff, p->kd))
-      return (4);
-    if (my_strstr(buff, p->kq))
-      return (5);
-    if (my_strstr(buff, p->kp))
-      return (6);
-    return (0);
-  }
+  buff[read(0, buff, 199)] = 0;
+  if (my_strstr(buff, p->kl))
+    return (1);
+  if (my_strstr(buff, p->kr))
+    return (2);
+  if (my_strstr(buff, p->kt))
+    return (3);
+  if (my_strstr(buff, p->kd))
+    return (4);
+  if (my_strstr(buff, p->kq))
+    return (5);
+  if (my_strstr(buff, p->kp))
+    return (6);
+  return (0);
+}

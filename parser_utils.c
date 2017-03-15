@@ -5,9 +5,10 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 16:22:15 2017 Thibaut Cornolti
-** Last update Mon Feb 27 13:01:22 2017 Thibaut Cornolti
+** Last update Wed Mar 15 13:21:19 2017 Thibaut Cornolti
 */
 
+#include <stdlib.h>
 #include "tetris.h"
 
 char		***init_val(t_pre_pars *p)

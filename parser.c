@@ -5,9 +5,10 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:26:06 2017 Thibaut Cornolti
-** Last update Mon Mar  6 14:23:44 2017 Thibaut Cornolti
+** Last update Wed Mar 15 13:21:26 2017 Thibaut Cornolti
 */
 
+#include <stdlib.h>
 #include "tetris.h"
 
 static int	fill_arg_max(t_pre_pars *p, char **arg)
