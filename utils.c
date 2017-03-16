@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:49:11 2017 Bastien
-** Last update Wed Mar  8 21:01:01 2017 Thibaut Cornolti
+** Last update Fri Mar 17 00:04:18 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -80,7 +80,7 @@ void		sort_tetri(t_shapes *shapes)
 
 int		my_help(char *name)
 {
-  my_putstr("Usage: ");
+  my_putstr("Usage:  ");
   my_putstr(name);
   my_putstr(" [options]\nOptions:\n");
   my_putstr("  --help\t\tDisplay this help\n  -l --level");
