@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Wed Mar  1 11:06:23 2017 Bastien
-** Last update Fri Mar 17 12:41:17 2017 Thibaut Cornolti
+** Last update Fri Mar 17 13:35:22 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -84,8 +84,11 @@ int		apply_action(int action, char **board,
 int		get_action(t_pars *p)
 {
   char		buff[201];
+  int		n;
 
-  buff[read(0, buff, 199)] = 0;
+  if ((n = read(0, buff, 199)) <= 0)
+    return (0);
+  buff[n] = 0;
   if (my_strstr(buff, p->kl))
     return (1);
   if (my_strstr(buff, p->kr))
