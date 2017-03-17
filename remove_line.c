@@ -5,11 +5,12 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Mar  7 18:30:07 2017 Bastien
-** Last update Fri Mar 17 12:35:09 2017 Thibaut Cornolti
+** Last update Fri Mar 17 13:06:53 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
-#include "game.h"
+#include <time.h>
+#include "tetris.h"
 #include "my.h"
 
 int	remove_line(char **board, int i)
@@ -48,6 +49,12 @@ int	check_fulline(char **board, t_game *game)
       if (!x && j == my_strlen(board[0]))
 	{
 	  game->score += game->level*100;
+	  if (game->score >= LEVEL_UP)
+	    {
+	      game->level += 1;
+	      game->score = 0;
+	      game->level_time = time(NULL);
+	    }
 	  return (remove_line(board, i));
 	}
     }

@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 10 11:19:37 2017 Thibaut Cornolti
-** Last update Fri Mar 17 12:58:40 2017 Thibaut Cornolti
+** Last update Fri Mar 17 13:03:23 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -66,11 +66,12 @@ void		draw_stats(t_game *g)
   mvprintw(15 + 6, 29 - my_intlen(g->line), "%d", g->line);
   mvprintw(15 + 7, 5, "Level");
   mvprintw(15 + 7, 29 - my_intlen(g->level), "%d", g->level);
+  if (time(NULL) - g->level_time <= 3)
+    mvprintw(15 + 7, 20, "LEVEL UP!");
   mvprintw(15 + 9, 5, "Timer");
+  mvprintw(15 + 9, 24, "%s%d:%s%d",
+	   (m < 10) ? "0" : "", m, (s < 10) ? "0" : "", s);
   if (g->pause.paused)
     mvprintw(15 + 9, 17, "GAME PAUSED!");
-  else
-    mvprintw(15 + 9, 24, "%s%d:%s%d",
-	     (m < 10) ? "0" : "", m, (s < 10) ? "0" : "", s);
 }
 

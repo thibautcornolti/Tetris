@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Fri Mar 17 12:58:50 2017 Thibaut Cornolti
+** Last update Fri Mar 17 13:06:29 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
@@ -15,7 +15,8 @@
 #include "game.h"
 #include "my.h"
 
-# define SPEED_COUNT 400
+# define SPEED_COUNT	400
+# define LEVEL_UP	500
 
 typedef struct	s_shapes
 {
