@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 10 11:19:37 2017 Thibaut Cornolti
-** Last update Fri Mar 17 13:03:23 2017 Thibaut Cornolti
+** Last update Fri Mar 17 17:49:35 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -37,6 +37,30 @@ void		draw_title()
       i += 1;
     }
   close(fd);
+}
+
+void		draw_next(t_pos *pos)
+{
+  static t_pos	*next;
+  int		i;
+  int		j;
+
+  if (pos)
+    next = pos;
+  else
+    {
+      create_box_sl(28, 3, 12, 20);
+      i = -1;
+      attron(COLOR_PAIR(next->color % 7 + 8));
+      while (next->map[++i])
+	{
+	  j = -1;
+	  while (next->map[i][++j])
+	    if (next->map[i][j] != -1)
+	      mvprintw(30 + i, 10 + j, "*");
+	}
+      attroff(COLOR_PAIR(next->color % 7 + 8));
+    }
 }
 
 static int	calc_time(t_game *g)

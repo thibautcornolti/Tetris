@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 27 19:09:51 2017 Thibaut Cornolti
-** Last update Wed Mar 15 13:21:29 2017 Thibaut Cornolti
+** Last update Fri Mar 17 17:44:52 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -54,6 +54,7 @@ void		init_game(t_game *g, t_pars *p)
   g->score = 0;
   g->line = 0;
   g->level = p->l;
+  g->level_time = 0;
   g->timer = 0;
   g->start_time = time(NULL);
   g->pause.paused = 0;
