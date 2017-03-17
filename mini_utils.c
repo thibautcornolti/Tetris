@@ -5,8 +5,10 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 09:40:36 2017 Bastien
-** Last update Fri Mar 17 12:12:42 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:42:35 2017 Thibaut Cornolti
 */
+
+#include "my.h"
 
 void	del_final_space(char *s)
 {
@@ -29,4 +31,12 @@ int	my_tablen(char	**tab)
   i = 0;
   while (tab && tab[++i]);
   return (i);
+}
+
+void	print_debug(char *s)
+{
+  if (!my_strcmp(s, " "))
+    my_putstr("(space)");
+  else
+    my_putstr(s);
 }

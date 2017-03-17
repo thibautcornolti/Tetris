@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Feb 22 17:09:29 2017 Thibaut Cornolti
-** Last update Wed Mar 15 13:20:54 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:44:39 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -34,14 +34,6 @@ static char	*replace_esc(char *s)
   return (res);
 }
 
-static void	print_debug(char *s)
-{
-  if (!my_strcmp(s, " "))
-    my_putstr("(space)");
-  else
-    my_putstr(s);
-}
-
 static void	key_debug(t_pars *p)
 {
   my_putstr("*** DEBUG MODE ***\nKey Left : ");
@@ -67,11 +59,31 @@ static void	key_debug(t_pars *p)
   my_putstr("\n");
 }
 
+static void	tetri_debug_put(t_shapes *s, int i)
+{
+  int		k;
+  int		j;
+
+  my_putstr(" : Size ");
+  my_put_nbr(s[i].width);
+  my_putstr("*");
+  my_put_nbr(s[i].height);
+  my_putstr(" : Color ");
+  my_put_nbr(s[i].color);
+  my_putstr(" :\n");
+  j = -1;
+  while (s[i].map[++j])
+    {
+      k = -1;
+      while (s[i].map[j][++k])
+	my_putchar((s[i].map[j][k] == -1) ? ' ' : s[i].map[j][k]);
+      my_putchar('\n');
+    }
+}
+
 static void	tetri_debug(t_shapes *s)
 {
   int		i;
-  int		j;
-  int		k;
 
   my_putstr("Tetriminos : ");
   my_put_nbr(my_shapeslen(s));
@@ -86,21 +98,7 @@ static void	tetri_debug(t_shapes *s)
 	  my_putstr(" : Error\n");
 	  continue;
 	}
-      my_putstr(" : Size ");
-      my_put_nbr(s[i].width);
-      my_putstr("*");
-      my_put_nbr(s[i].height);
-      my_putstr(" : Color ");
-      my_put_nbr(s[i].color);
-      my_putstr(" :\n");
-      j = -1;
-      while (s[i].map[++j])
-	{
-	  k = -1;
-	  while (s[i].map[j][++k])
-	    my_putchar((s[i].map[j][k] == -1) ? ' ' : s[i].map[j][k]);
-	  my_putchar('\n');
-	}
+      tetri_debug_put(s, i);
     }
 }
 

@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Mar  7 18:30:07 2017 Bastien
-** Last update Fri Mar 17 12:30:48 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:35:09 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -34,7 +34,7 @@ int	remove_line(char **board, int i)
 int	check_fulline(char **board, t_game *game)
 {
   int	i;
-  int	xj;
+  int	j;
   int	x;
 
   i = -1;

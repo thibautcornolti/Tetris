@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Fri Mar 17 12:29:56 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:55:12 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -14,17 +14,6 @@
 #include <string.h>
 #include <sys/timeb.h>
 #include "tetris.h"
-
-int	check_loss(char **tab)
-{
-  int	i;
-
-  i = -1;
-  while (tab && tab[0][++i])
-    if ((int)tab[0][i] > 0)
-      return (0);
-  return (1);
-}
 
 void	init_board(char ***board, t_pars *pars)
 {
@@ -47,58 +36,6 @@ void	init_board(char ***board, t_pars *pars)
   (*board)[pars->row] = NULL;
 }
 
-void	rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
-{
-  int	i;
-
-  srand(time(NULL));
-  i = (int)rand() % my_shapeslen(shapes);
-  while (!shapes[i].valide || shapes[i].map == NULL)
-    i = (int)rand() % my_shapeslen(shapes);
-  pos->index = i;
-  pos->x = (pars->col - my_strlen(shapes->map[i])) / 2;
-  pos->y = 0;
-  pos->orient = 0;
-  pos->map = shapes[i].map;
-  pos->color = shapes[i].color;
-}
-
-void	apply_map(char **board, t_pos *pos)
-{
-  int	i;
-  int	j;
-
-  i = -1;
-  while (pos->map[++i])
-    {
-      j = -1;
-      while (pos->map[i][++j])
-	board[pos->y + i][pos->x + j] = (pos->map[i][j] == -1) ?
-	  board[pos->y + i][pos->x + j] : pos->color;
-    }
-}
-
-void	check_hit(char **board, t_pos *pos)
-{
-
-  int	i;
-  int	j;
-
-  if (pos->index == -1)
-    return ;
-  i = -1;
-  while (pos->map[++i])
-    {
-      j = -1;
-      while (pos->map[i][++j])
-	if (board[pos->y + i + 1][pos->x + j] > 0 && pos->map[i][j] > 0)
-	  {
-	    apply_map(board, pos);
-	    pos->index = -1;
-	  }
-    }
-}
-
 void	falling_shapes(char **board, t_pos *pos)
 {
   int	i;
@@ -119,12 +56,13 @@ void	falling_shapes(char **board, t_pos *pos)
   pos->y = (pos->index == -1) ? pos->y : pos->y + 1;
 }
 
+void	game_act(t_shapes *shapes, t_pars *pars, t_game *game)
+
 void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 {
   char	**board;
   t_pos	pos;
   int	action;
-  struct timeb tp;
   int	count;
 
   init_board(&board, pars);

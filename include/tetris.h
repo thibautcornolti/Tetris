@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Fri Mar 17 12:12:14 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:48:04 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
@@ -14,6 +14,8 @@
 #include "parser.h"
 #include "game.h"
 #include "my.h"
+
+# define SPEED_COUNT 400
 
 typedef struct	s_shapes
 {
@@ -50,5 +52,6 @@ int		get_action(t_pars *);
 void		replace_space(char **);
 void		del_final_space(char *);
 int		my_pause(t_game *, int);
+void		print_debug(char *);
 
 #endif /* !TETRIS_H_ */

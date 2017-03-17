@@ -5,16 +5,16 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Wed Mar  1 11:06:23 2017 Bastien
-** Last update Fri Mar 17 12:28:26 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:41:17 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
 #include "tetris.h"
 
-int	can_dash(t_pos *pos, char **board, int d)
+int		can_dash(t_pos *pos, char **board, int d)
 {
-  int	i;
-  int	j;
+  int		i;
+  int		j;
 
   i = -1;
   while (pos->map[++i])
@@ -27,17 +27,22 @@ int	can_dash(t_pos *pos, char **board, int d)
   return (1);
 }
 
-void   	can_rotate(t_shapes *shapes, t_pos *pos, char **board)
+static void	set_can_rotate(t_shapes *shapes, t_pos *pos)
 {
-  char	**tab;
-  int	i;
-  int	j;
-
-  tab = pos->map;
   pos->map = (pos->orient == 0) ? shapes->map_right : pos->map;
   pos->map = (pos->orient == 1) ? shapes->map_down : pos->map;
   pos->map = (pos->orient == 2) ? shapes->map_left : pos->map;
   pos->map = (pos->orient == 3) ? shapes->map : pos->map;
+}
+
+void	   	can_rotate(t_shapes *shapes, t_pos *pos, char **board)
+{
+  char		**tab;
+  int		i;
+  int		j;
+
+  tab = pos->map;
+  set_can_rotate(shapes, pos);
   i = -1;
   if ((my_strlen(pos->map[0]) + pos->x > my_strlen(board[0]))
       || (my_tablen(pos->map) + pos->y > my_tablen(board)))
@@ -58,7 +63,7 @@ void   	can_rotate(t_shapes *shapes, t_pos *pos, char **board)
   pos->orient = ((pos->orient + 1) % 4 == 0) ? 0 : pos->orient + 1;
 }
 
-int	apply_action(int action, char **board,
+int		apply_action(int action, char **board,
 		     t_pos *pos, t_shapes *shapes)
 {
   if (action == 1 && pos->x > 0 && can_dash(pos, board, -1))
