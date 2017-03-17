@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Fri Mar 17 13:31:02 2017 Thibaut Cornolti
+** Last update Fri Mar 17 13:40:14 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
@@ -44,6 +44,7 @@ int			main(int ac, char **av)
   my_super_parser(&p, av);
   get_tetrimino(&s);
   non_block(1, -1);
+  check_game(s);
   if (p.d)
     debug(&p, s);
   init_game(&g, &p);

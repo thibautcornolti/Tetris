@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Fri Mar 17 12:26:53 2017 Thibaut Cornolti
+** Last update Fri Mar 17 13:39:49 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -115,7 +115,8 @@ void		get_tetrimino(t_shapes **shapes)
   int		fd;
 
   *shapes = NULL;
-  directory = opendir("./tetriminos");
+  if ((directory = opendir("./tetriminos")) == NULL)
+    return ;
   fd = 0;
   while ((file = readdir(directory)) != NULL)
     {
