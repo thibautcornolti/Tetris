@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:12:32 2017 Thibaut Cornolti
-** Last update Fri Mar 17 12:23:41 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:59:04 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -25,7 +25,7 @@ static void	init_pair_color()
   init_pair(14, 7, 7);
 }
 
-static void	draw_shape(t_pos *pos, t_pars *p)
+static void	draw_shape(t_pos *pos)
 {
   int		i;
   int		j;
@@ -61,7 +61,7 @@ static void	draw_board(t_pos *pos, t_pars *p, char **board)
 	  attroff(COLOR_PAIR(board[i][j] % 8));
 	}
     }
-  draw_shape(pos, p);
+  draw_shape(pos);
 }
 
 int		display(char **board, t_pos *pos, t_game *g, t_pars *p)
@@ -71,7 +71,7 @@ int		display(char **board, t_pos *pos, t_game *g, t_pars *p)
       LINES - 16 > p->row &&
       COLS - 32 > p->col)
     {
-      draw_stats(g, p);
+      draw_stats(g);
       draw_title(pos, p);
       draw_board(pos, p, board);
     }

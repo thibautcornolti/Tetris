@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 10 11:19:37 2017 Thibaut Cornolti
-** Last update Fri Mar 17 12:29:00 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:58:40 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -49,7 +49,7 @@ static int	calc_time(t_game *g)
   return (t);
 }
 
-void		draw_stats(t_game *g, t_pars *p)
+void		draw_stats(t_game *g)
 {
   int		m;
   int		s;
