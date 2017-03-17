@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 12:31:23 2017 Thibaut Cornolti
-** Last update Fri Mar 17 12:41:01 2017 Thibaut Cornolti
+** Last update Fri Mar 17 17:01:49 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -23,7 +23,7 @@ int		check_loss(char **tab)
   return (1);
 }
 
-void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
+void		get_next_piece(t_pos *pos, t_shapes *shapes, t_pars *pars)
 {
   int		i;
 
@@ -37,6 +37,19 @@ void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
   pos->orient = 0;
   pos->map = shapes[i].map;
   pos->color = shapes[i].color;
+}
+
+void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
+{
+  static t_pos	*next_p;
+
+  if ((next_p = malloc(sizeof(t_pos))) == 0)
+    return ;
+  if (!next_p)
+    rand_next(next_p, shapes, pars);
+  pos = next_p;
+  rand_next(next_p, shapes, pars);
+  draw_next(new_p);
 }
 
 void		apply_map(char **board, t_pos *pos)
