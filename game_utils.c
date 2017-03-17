@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 12:31:23 2017 Thibaut Cornolti
-** Last update Fri Mar 17 17:42:23 2017 Thibaut Cornolti
+** Last update Fri Mar 17 18:03:35 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -43,17 +43,18 @@ void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
 {
   static t_pos	*next_p;
   t_pos		*temp;
+
   if (!next_p)
     {
       if ((next_p = malloc(sizeof(t_pos))) == 0)
-	return ;
+  	return ;
       get_next_piece(next_p, shapes, pars);
     }
   temp = pos;
   pos = next_p;
   next_p = temp;
   get_next_piece(next_p, shapes, pars);
-  draw_next(next_p);
+  draw_next(next_p, NULL);
 }
 
 void		apply_map(char **board, t_pos *pos)
