@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Fri Mar 17 12:55:12 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:56:18 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -55,8 +55,6 @@ void	falling_shapes(char **board, t_pos *pos)
     check_hit(board, pos);
   pos->y = (pos->index == -1) ? pos->y : pos->y + 1;
 }
-
-void	game_act(t_shapes *shapes, t_pars *pars, t_game *game)
 
 void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 {
