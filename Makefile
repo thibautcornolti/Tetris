@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Fri Mar 17 12:42:54 2017 Thibaut Cornolti
+## Last update Fri Mar 17 13:16:29 2017 Thibaut Cornolti
 ##
 
 SRC	=	tetris.c		\
@@ -27,6 +27,7 @@ SRC	=	tetris.c		\
 		set_rotated.c		\
 		game.c			\
 		game_utils.c		\
+		score.c			\
 		action_game.c		\
 		remove_line.c
 

@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Fri Mar 17 12:26:39 2017 Thibaut Cornolti
+** Last update Fri Mar 17 13:31:02 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
@@ -48,7 +48,9 @@ int			main(int ac, char **av)
     debug(&p, s);
   init_game(&g, &p);
   non_block(1, 0);
+  get_high_score(&g);
   game(s, &p, &g);
+  set_high_score(&g);
   endwin();
   non_block(0, 0);
   return (0);

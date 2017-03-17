@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Fri Mar 17 13:06:29 2017 Thibaut Cornolti
+** Last update Fri Mar 17 13:17:01 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
@@ -17,6 +17,7 @@
 
 # define SPEED_COUNT	400
 # define LEVEL_UP	500
+# define HIGH_SCORE_F	"high_score.dat"
 
 typedef struct	s_shapes
 {
@@ -54,5 +55,6 @@ void		replace_space(char **);
 void		del_final_space(char *);
 int		my_pause(t_game *, int);
 void		print_debug(char *);
+void		get_high_score(t_game *);
 
 #endif /* !TETRIS_H_ */
