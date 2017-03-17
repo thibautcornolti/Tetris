@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Tue Feb 28 17:12:32 2017 Thibaut Cornolti
-** Last update Fri Mar 17 17:08:28 2017 Thibaut Cornolti
+** Last update Fri Mar 17 18:01:43 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -74,7 +74,7 @@ int		display(char **board, t_pos *pos, t_game *g, t_pars *p)
       draw_stats(g);
       draw_title(pos, p);
       draw_board(pos, p, board);
-      draw_next(NULL);
+      draw_next(NULL, p);
     }
   else
     mvprintw(LINES / 2, COLS / 2 - 10, "ENLARGE THE TERMINAL");

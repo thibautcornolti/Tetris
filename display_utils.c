@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 10 11:19:37 2017 Thibaut Cornolti
-** Last update Fri Mar 17 17:49:35 2017 Thibaut Cornolti
+** Last update Fri Mar 17 18:01:38 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -39,7 +39,7 @@ void		draw_title()
   close(fd);
 }
 
-void		draw_next(t_pos *pos)
+void		draw_next(t_pos *pos, t_pars *p)
 {
   static t_pos	*next;
   int		i;
