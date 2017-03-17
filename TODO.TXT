@@ -1,5 +1,3 @@
 TODO :
 
- - LVL;
  - Gestion dossier non présent, dossier vide, pas de piece valide;
- - High score (soit un recommencer, soit un fichier avec le plus haut score ever);
