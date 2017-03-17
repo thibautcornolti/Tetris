@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:49:11 2017 Bastien
-** Last update Fri Mar 17 00:04:18 2017 Bastien
+** Last update Fri Mar 17 12:07:50 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -94,7 +94,7 @@ int		my_help(char *name)
   my_putstr("  -kd --key-down={K}\tDROP the tetrimino ");
   my_putstr("using the K key (def: down arrow)\n");
   my_putstr("  -kq --key-quit={K}\tQUIT the tetrimino ");
-  my_putstr("using the K key (def: 'Q' key)\n");
+  my_putstr("using the K key (def: 'q' key)\n");
   my_putstr("  -kp --key-drop={K}\tPAUSE/RESTART the game ");
   my_putstr("using the K key (def: space bar)\n");
   my_putstr("  --map-size={row,col}\tSet the numbers of ");

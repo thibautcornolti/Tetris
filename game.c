@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Wed Mar 15 13:27:35 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:18:41 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -125,9 +125,11 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
   t_pos	pos;
   int	action;
   struct timeb tp;
+  int	count;
 
   init_board(&board, pars);
-  memset(&pos, 0, sizeof(t_pos));
+  my_memset(&pos, 0, sizeof(t_pos));
+  count = 400;
   while (check_loss(board))
     {
       rand_next(&pos, shapes, pars);
@@ -140,14 +142,17 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 		  return ;
 	      display(board, &pos, game, pars);
 	    }
-	  if (!ftime(&tp) && !(tp.millitm%200) && !game->pause.paused)
+	  if (count >= 400 && !game->pause.paused)
 	    {
+	      count = 0;
 	      falling_shapes(board, &pos);
 	      display(board, &pos, game, pars);
 	      usleep(1000);
 	    }
 	  while (check_fulline(board, game))
 	    display(board, &pos, game, pars);
+	  count += game->level;
+	  usleep(1000);
 	}
     }
   // TODO : Loss fct

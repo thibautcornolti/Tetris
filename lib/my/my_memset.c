@@ -5,18 +5,17 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Oct 24 21:52:16 2016 Thibaut Cornolti
-** Last update Tue Oct 25 13:18:26 2016 Thibaut Cornolti
+** Last update Fri Mar 17 12:13:18 2017 Thibaut Cornolti
 */
 
-void	*my_memset(void *src, int c, int n)
+void	*my_memset(void *src, char c, int n)
 {
   int	i;
+  char	*s;
 
-  i = 0;
-  while (i < n)
-    {
-      ((int *)src)[i] = c;
-      i += 1;
-    }
+  s = src;
+  i = -1;
+  while (++i < n)
+    s[i] = c;
   return (src);
 }

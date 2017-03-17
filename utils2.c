@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 09:40:36 2017 Bastien
-** Last update Mon Mar 13 14:14:40 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:12:42 2017 Thibaut Cornolti
 */
 
 void	del_final_space(char *s)
