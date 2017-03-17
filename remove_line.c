@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Mar  7 18:30:07 2017 Bastien
-** Last update Fri Mar 10 13:04:19 2017 Bastien
+** Last update Fri Mar 17 12:30:48 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -25,16 +25,16 @@ int	remove_line(char **board, int i)
 	board[y][x] = board[y - 1][x];
     }
   x = -1;
-  while(board[0][++x])
+  while (board[0][++x])
     board[0][x] = -1;
   usleep(100000);
   return (1);
 }
 
-int     check_fulline(char **board, t_game *game)
+int	check_fulline(char **board, t_game *game)
 {
-  int   i;
-  int   j;
+  int	i;
+  int	xj;
   int	x;
 
   i = -1;
@@ -53,4 +53,3 @@ int     check_fulline(char **board, t_game *game)
     }
   return (0);
 }
-  

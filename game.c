@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Fri Mar 17 12:18:41 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:29:56 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -37,7 +37,8 @@ void	init_board(char ***board, t_pars *pars)
   while (++i < pars->row)
     {
       j = -1;
-      if (((*board)[i] = malloc(sizeof(char) * (pars->col + 1))) == NULL)
+      if (((*board)[i] = malloc(sizeof(char) *
+				(pars->col + 1))) == NULL)
 	return ;
       while (++j < pars->col)
 	(*board)[i][j] = -1;
@@ -73,9 +74,8 @@ void	apply_map(char **board, t_pos *pos)
       j = -1;
       while (pos->map[i][++j])
 	board[pos->y + i][pos->x + j] = (pos->map[i][j] == -1) ?
-	  board[pos->y + i][pos->x + j] : pos->color;      
+	  board[pos->y + i][pos->x + j] : pos->color;
     }
-  return ;  
 }
 
 void	check_hit(char **board, t_pos *pos)

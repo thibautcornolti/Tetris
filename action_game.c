@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Wed Mar  1 11:06:23 2017 Bastien
-** Last update Wed Mar 15 13:31:40 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:28:26 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -17,8 +17,6 @@ int	can_dash(t_pos *pos, char **board, int d)
   int	j;
 
   i = -1;
-  /* if (my_strlen(pos->map[0]) >= my_strlen(board[0]) + d) */
-  /*   return (0); */
   while (pos->map[++i])
     {
       j = -1;
@@ -55,16 +53,18 @@ void   	can_rotate(t_shapes *shapes, t_pos *pos, char **board)
 	  {
 	    pos->map = tab;
 	    return ;
-	  } 
+	  }
     }
   pos->orient = ((pos->orient + 1) % 4 == 0) ? 0 : pos->orient + 1;
 }
 
-int	apply_action(int action, char **board, t_pos *pos, t_shapes *shapes)
+int	apply_action(int action, char **board,
+		     t_pos *pos, t_shapes *shapes)
 {
   if (action == 1 && pos->x > 0 && can_dash(pos, board, -1))
     pos->x -= 1;
-  else if (action == 2 && pos->x + my_strlen(pos->map[0]) < my_strlen(board[0])
+  else if (action == 2 &&
+	   pos->x + my_strlen(pos->map[0]) < my_strlen(board[0])
 	   && can_dash(pos, board, 1))
     pos->x += 1;
   else if (action == 3)

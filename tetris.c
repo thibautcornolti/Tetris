@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Thu Mar  2 11:17:30 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:26:39 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
@@ -22,7 +22,7 @@ void			non_block(int act, int vtime)
   if (oui)
     {
       oui = 0;
-      tcgetattr(0, &base);      
+      tcgetattr(0, &base);
     }
   tcgetattr(0, &t);
   t.c_lflag &= ~(ECHO | ICANON | ISIG);

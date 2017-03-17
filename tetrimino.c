@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Wed Mar 15 13:20:59 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:26:53 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -121,7 +121,8 @@ void		get_tetrimino(t_shapes **shapes)
     {
       if (check_name(file->d_name))
 	{
-	  if ((fd = open(my_strmcat("./tetriminos/", file->d_name), O_RDONLY)) == -1)
+	  if ((fd = open(my_strmcat("./tetriminos/",
+				    file->d_name), O_RDONLY)) == -1)
 	    return ;
 	  add_shape(shapes, fd, file->d_name);
 	}

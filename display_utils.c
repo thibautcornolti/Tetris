@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 10 11:19:37 2017 Thibaut Cornolti
-** Last update Fri Mar 17 12:24:40 2017 Thibaut Cornolti
+** Last update Fri Mar 17 12:29:00 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -58,7 +58,8 @@ void		draw_stats(t_game *g, t_pars *p)
   s = calc_time(g) % 60;
   create_box_sl(15, 3, 11, 28);
   mvprintw(15 + 2, 5, "High Score");
-  mvprintw(15 + 2, 29 - my_intlen(g->high_score), "%d", g->high_score);
+  mvprintw(15 + 2, 29 - my_intlen(g->high_score),
+	   "%d", g->high_score);
   mvprintw(15 + 3, 5, "Score");
   mvprintw(15 + 3, 29 - my_intlen(g->score), "%d", g->score);
   mvprintw(15 + 6, 5, "Lines");
