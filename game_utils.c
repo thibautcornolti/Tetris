@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 12:31:23 2017 Thibaut Cornolti
-** Last update Sun Mar 19 16:42:46 2017 Thibaut Cornolti
+** Last update Sun Mar 19 17:26:50 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -23,13 +23,13 @@ int		check_loss(char **tab)
   return (1);
 }
 
-void		get_next_piece(t_pos *pos, t_shapes *shapes)
+void		get_next_piece(t_pos *pos, t_shapes *shapes, t_pars *pars)
 {
   int		i;
 
   srand(time(NULL));
   i = (int)rand() % my_shapeslen(shapes);
-  while (!shapes[i].valide || shapes[i].map == NULL)
+  while ((pars->row < shapes[i].height || pars->col < shapes[i].width) || (!shapes[i].valide || !shapes[i].map))
     i = (int)rand() % my_shapeslen(shapes);
   pos->index = i;
   pos->x = 0;
@@ -37,9 +37,10 @@ void		get_next_piece(t_pos *pos, t_shapes *shapes)
   pos->orient = 0;
   pos->map = shapes[i].map;
   pos->color = shapes[i].color;
+  dprintf(2, "board size : %d,%d\npiece size : %d,%d\n\n", pars->row, pars->col, shapes[i].height, shapes[i].width);
 }
 
-void		rand_next(t_pos *pos, t_shapes *shapes)
+void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
 {
   static t_pos	*next_p;
   t_pos		*temp;
@@ -48,12 +49,12 @@ void		rand_next(t_pos *pos, t_shapes *shapes)
     {
       if ((next_p = malloc(sizeof(t_pos))) == 0)
   	return ;
-      get_next_piece(next_p, shapes);
+      get_next_piece(next_p, shapes, pars);
     }
   temp = next_p;
   next_p = pos;
   pos = temp;
-  get_next_piece(next_p, shapes);
+  get_next_piece(next_p, shapes, pars);
   draw_next(next_p, NULL);
 }
 
