@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 17:49:11 2017 Bastien
-** Last update Fri Mar 17 12:07:50 2017 Thibaut Cornolti
+** Last update Sun Mar 19 12:21:17 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -80,7 +80,7 @@ void		sort_tetri(t_shapes *shapes)
 
 int		my_help(char *name)
 {
-  my_putstr("Usage:  ");
+  my_putstr("Usage: ");
   my_putstr(name);
   my_putstr(" [options]\nOptions:\n");
   my_putstr("  --help\t\tDisplay this help\n  -l --level");
@@ -91,11 +91,11 @@ int		my_help(char *name)
   my_putstr("RIGHT using the K key (def: right arrow)\n");
   my_putstr("  -kt --key-turn={K}\tTURN the tetrimino ");
   my_putstr("clockwise 90d using the K key (def: top arrow)\n");
-  my_putstr("  -kd --key-down={K}\tDROP the tetrimino ");
+  my_putstr("  -kd --key-drop={K}\tDROP the tetrimino ");
   my_putstr("using the K key (def: down arrow)\n");
-  my_putstr("  -kq --key-quit={K}\tQUIT the tetrimino ");
-  my_putstr("using the K key (def: 'q' key)\n");
-  my_putstr("  -kp --key-drop={K}\tPAUSE/RESTART the game ");
+  my_putstr("  -kq --key-quit={K}\tQUIT the game ");
+  my_putstr("using the K key (def: 'Q' key)\n");
+  my_putstr("  -kp --key-pause={K}\tPAUSE/RESTART the game ");
   my_putstr("using the K key (def: space bar)\n");
   my_putstr("  --map-size={row,col}\tSet the numbers of ");
   my_putstr("rows and columns of the map (def: 20,10)\n");
