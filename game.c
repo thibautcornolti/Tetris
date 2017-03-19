@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Fri Mar 17 12:56:18 2017 Thibaut Cornolti
+** Last update Sun Mar 19 12:51:57 2017 Bastien
 */
 
 #include <unistd.h>
@@ -15,7 +15,7 @@
 #include <sys/timeb.h>
 #include "tetris.h"
 
-void	init_board(char ***board, t_pars *pars)
+void	init_board(char ***board, t_pars *pars, t_pos *pos, int *count)
 {
   int	i;
   int	j;
@@ -34,6 +34,8 @@ void	init_board(char ***board, t_pars *pars)
       (*board)[i][j] = 0;
     }
   (*board)[pars->row] = NULL;
+  my_memset(pos, 0, sizeof(t_pos));
+  *count = 400;
 }
 
 void	falling_shapes(char **board, t_pos *pos)
@@ -56,6 +58,20 @@ void	falling_shapes(char **board, t_pos *pos)
   pos->y = (pos->index == -1) ? pos->y : pos->y + 1;
 }
 
+int	falling_time(char **board, t_pos *pos, t_game *game, t_pars *pars)
+{
+  falling_shapes(board, pos);
+  display(board, pos, game, pars);
+  usleep(1000);
+  return (0);
+}
+
+void	one_turn(int *count, t_game *game)
+{
+  *count += game->level;
+  usleep(1000);
+}
+
 void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 {
   char	**board;
@@ -63,9 +79,7 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
   int	action;
   int	count;
 
-  init_board(&board, pars);
-  my_memset(&pos, 0, sizeof(t_pos));
-  count = 400;
+  init_board(&board, pars, &pos, &count);
   while (check_loss(board))
     {
       rand_next(&pos, shapes, pars);
@@ -79,17 +93,10 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
 	      display(board, &pos, game, pars);
 	    }
 	  if (count >= 400 && !game->pause.paused)
-	    {
-	      count = 0;
-	      falling_shapes(board, &pos);
-	      display(board, &pos, game, pars);
-	      usleep(1000);
-	    }
+	    count = falling_time(board, &pos, game, pars);
 	  while (check_fulline(board, game))
 	    display(board, &pos, game, pars);
-	  count += game->level;
-	  usleep(1000);
+	  one_turn(&count, game);
 	}
     }
-  // TODO : Loss fct
 }
