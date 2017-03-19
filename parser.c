@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Feb 20 13:26:06 2017 Thibaut Cornolti
-** Last update Sun Mar 19 12:32:38 2017 Thibaut Cornolti
+** Last update Sun Mar 19 16:40:24 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -34,7 +34,8 @@ static int	fill_arg_max(t_pre_pars *p, char **arg)
   free(tab);
   free(val);
   free_tab(&arg);
-  exit(my_puterror("Invalid argument.\n"));
+  my_puterror("Invalid argument.\n");
+  exit(84);
 }
 
 static int	fill_arg_min(t_pre_pars *p, char *arg, char *arg2)
@@ -58,7 +59,8 @@ static int	fill_arg_min(t_pre_pars *p, char *arg, char *arg2)
       }
   free(tab);
   free(val);
-  exit(my_puterror("Invalid argument.\n"));
+  my_puterror("Invalid argument.\n");
+  exit(84);
 }
 
 static int	fill_arg(t_pre_pars *p, char **av, int i)
