@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 12:31:23 2017 Thibaut Cornolti
-** Last update Sun Mar 19 17:26:50 2017 Bastien
+** Last update Sun Mar 19 17:30:26 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -29,7 +29,8 @@ void		get_next_piece(t_pos *pos, t_shapes *shapes, t_pars *pars)
 
   srand(time(NULL));
   i = (int)rand() % my_shapeslen(shapes);
-  while ((pars->row < shapes[i].height || pars->col < shapes[i].width) || (!shapes[i].valide || !shapes[i].map))
+  while ((pars->row < shapes[i].height ||
+	  pars->col < shapes[i].width) || (!shapes[i].valide || !shapes[i].map))
     i = (int)rand() % my_shapeslen(shapes);
   pos->index = i;
   pos->x = 0;
@@ -37,7 +38,6 @@ void		get_next_piece(t_pos *pos, t_shapes *shapes, t_pars *pars)
   pos->orient = 0;
   pos->map = shapes[i].map;
   pos->color = shapes[i].color;
-  dprintf(2, "board size : %d,%d\npiece size : %d,%d\n\n", pars->row, pars->col, shapes[i].height, shapes[i].width);
 }
 
 void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
