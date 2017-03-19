@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Sun Mar 19 12:51:57 2017 Bastien
+** Last update Sun Mar 19 16:44:42 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -82,7 +82,7 @@ void	game(t_shapes *shapes, t_pars *pars, t_game *game)
   init_board(&board, pars, &pos, &count);
   while (check_loss(board))
     {
-      rand_next(&pos, shapes, pars);
+      rand_next(&pos, shapes);
       while (pos.index != -1)
 	{
 	  if ((action = get_action(pars)))

@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 12:31:23 2017 Thibaut Cornolti
-** Last update Sun Mar 19 13:54:23 2017 Bastien
+** Last update Sun Mar 19 16:42:46 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -23,7 +23,7 @@ int		check_loss(char **tab)
   return (1);
 }
 
-void		get_next_piece(t_pos *pos, t_shapes *shapes, t_pars *pars)
+void		get_next_piece(t_pos *pos, t_shapes *shapes)
 {
   int		i;
 
@@ -32,7 +32,6 @@ void		get_next_piece(t_pos *pos, t_shapes *shapes, t_pars *pars)
   while (!shapes[i].valide || shapes[i].map == NULL)
     i = (int)rand() % my_shapeslen(shapes);
   pos->index = i;
-  //pos->x = (pars->col - my_strlen(shapes->map[i])) / 2;
   pos->x = 0;
   pos->y = 0;
   pos->orient = 0;
@@ -40,7 +39,7 @@ void		get_next_piece(t_pos *pos, t_shapes *shapes, t_pars *pars)
   pos->color = shapes[i].color;
 }
 
-void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
+void		rand_next(t_pos *pos, t_shapes *shapes)
 {
   static t_pos	*next_p;
   t_pos		*temp;
@@ -49,12 +48,12 @@ void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
     {
       if ((next_p = malloc(sizeof(t_pos))) == 0)
   	return ;
-      get_next_piece(next_p, shapes, pars);
+      get_next_piece(next_p, shapes);
     }
   temp = next_p;
   next_p = pos;
   pos = temp;
-  get_next_piece(next_p, shapes, pars);
+  get_next_piece(next_p, shapes);
   draw_next(next_p, NULL);
 }
 
