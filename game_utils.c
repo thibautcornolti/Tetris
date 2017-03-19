@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 12:31:23 2017 Thibaut Cornolti
-** Last update Fri Mar 17 18:03:35 2017 Bastien
+** Last update Sun Mar 19 13:54:23 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -32,7 +32,8 @@ void		get_next_piece(t_pos *pos, t_shapes *shapes, t_pars *pars)
   while (!shapes[i].valide || shapes[i].map == NULL)
     i = (int)rand() % my_shapeslen(shapes);
   pos->index = i;
-  pos->x = (pars->col - my_strlen(shapes->map[i])) / 2;
+  //pos->x = (pars->col - my_strlen(shapes->map[i])) / 2;
+  pos->x = 0;
   pos->y = 0;
   pos->orient = 0;
   pos->map = shapes[i].map;
@@ -50,9 +51,9 @@ void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
   	return ;
       get_next_piece(next_p, shapes, pars);
     }
-  temp = pos;
-  pos = next_p;
-  next_p = temp;
+  temp = next_p;
+  next_p = pos;
+  pos = temp;
   get_next_piece(next_p, shapes, pars);
   draw_next(next_p, NULL);
 }
