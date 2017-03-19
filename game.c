@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Feb 28 16:42:04 2017 Bastien
-** Last update Sun Mar 19 17:14:00 2017 Bastien
+** Last update Sun Mar 19 18:20:27 2017 Bastien
 */
 
 #include <unistd.h>
@@ -44,9 +44,9 @@ void	falling_shapes(char **board, t_pos *pos)
 
   i = -1;
   pos->index = (my_strlen(pos->map[0]) + pos->x >
-		my_strlen(board[0])) ? -1 : pos->index;
+  		my_strlen(board[0])) ? -1 : pos->index;
   pos->index = (my_tablen(pos->map) + pos->y >
-		my_tablen(board)) ? -1 : pos->index;
+  		my_tablen(board)) ? -1 : pos->index;
   while (pos->index != -1 && pos->map[++i + 1]);
   if (!board[pos->y + i + 1] && !pos->map[i + 1])
     {

@@ -1,3 +1,6 @@
 tetris
 lib/my/libmy.a
 tetriminos/*
+test/
+test/*
+TODO.TXT

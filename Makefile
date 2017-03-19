@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Fri Mar 17 13:42:49 2017 Thibaut Cornolti
+## Last update Sun Mar 19 18:24:30 2017 Bastien
 ##
 
 SRC	=	tetris.c		\
@@ -36,7 +36,7 @@ OBJS	=	$(SRCS:.c=.o)
 
 NAME	=	tetris
 
-CC	=	gcc -g
+CC	=	gcc
 
 HEADER	=	include/
 
