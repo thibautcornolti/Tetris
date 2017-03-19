@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Sun Mar 19 16:47:02 2017 Thibaut Cornolti
+** Last update Sun Mar 19 23:42:45 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -60,7 +60,6 @@ void	add_map(int fd, t_shapes *piece)
   check_map(piece, str);
   free(str);
 }
-
 
 void	add_shape(t_shapes **shapes, int fd, char *name)
 {

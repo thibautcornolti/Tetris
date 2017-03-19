@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 13:40:26 2017 Thibaut Cornolti
-** Last update Sun Mar 19 18:26:33 2017 Thibaut Cornolti
+** Last update Sun Mar 19 23:43:06 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -51,7 +51,7 @@ void		check_game(t_shapes *s, t_pars *p, int i)
   if (!s)
     {
       my_puterror("Not enough tetriminos!\n");
-      non_block(0,0);
+      non_block(0, 0);
       exit(84);
     }
   if (i)
@@ -65,7 +65,7 @@ void		check_game(t_shapes *s, t_pars *p, int i)
 	  s += 1;
 	}
       my_puterror("Not enough tetriminos!\n");
-      non_block(0,0);
+      non_block(0, 0);
       exit(84);
     }
 }
