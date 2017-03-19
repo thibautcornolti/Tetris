@@ -5,13 +5,13 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 13:40:26 2017 Thibaut Cornolti
-** Last update Fri Mar 17 13:45:00 2017 Thibaut Cornolti
+** Last update Sun Mar 19 11:51:13 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
 #include "tetris.h"
 
-void		check_game(t_shapes *s)
+void		check_game(t_shapes *s, int i)
 {
   if (!s)
     {
@@ -19,13 +19,16 @@ void		check_game(t_shapes *s)
       non_block(0,0);
       exit(84);
     }
-  while (s->name)
+  if (i)
     {
-      if (s->valide)
-	return ;
-      s += 1;
+      while (s->name)
+	{
+	  if (s->valide)
+	    return ;
+	  s += 1;
+	}
+      my_puterror("Not enough tetriminos!\n");
+      non_block(0,0);
+      exit(84);
     }
-  my_puterror("Not enough tetriminos!\n");
-  non_block(0,0);
-  exit(84);
 }

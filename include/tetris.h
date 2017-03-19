@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Jan 30 09:51:51 2017 Thibaut Cornolti
-** Last update Fri Mar 17 18:01:55 2017 Thibaut Cornolti
+** Last update Sun Mar 19 11:52:04 2017 Thibaut Cornolti
 */
 
 #ifndef TETRIS_H_
@@ -59,6 +59,6 @@ int		my_pause(t_game *, int);
 void		print_debug(char *);
 void		get_high_score(t_game *);
 void		set_high_score(t_game *);
-void		check_game(t_shapes *);
+void		check_game(t_shapes *, int);
 
 #endif /* !TETRIS_H_ */

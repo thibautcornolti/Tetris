@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 10 11:19:37 2017 Thibaut Cornolti
-** Last update Fri Mar 17 18:01:38 2017 Thibaut Cornolti
+** Last update Fri Mar 17 18:05:14 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -49,7 +49,7 @@ void		draw_next(t_pos *pos, t_pars *p)
     next = pos;
   else
     {
-      create_box_sl(28, 3, 12, 20);
+      create_box_sl(15, 35 + p->col, 11, 20);
       i = -1;
       attron(COLOR_PAIR(next->color % 7 + 8));
       while (next->map[++i])

@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Fri Mar 17 13:39:49 2017 Thibaut Cornolti
+** Last update Sun Mar 19 12:01:35 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -55,6 +55,8 @@ void	add_map(int fd, t_shapes *piece)
       free(temp);
       free(antileak);
     }
+  if (!str)
+    return ;
   piece->map = my_strsplit(str, '@');
   check_map(piece, str);
   free(str);
