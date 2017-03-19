@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Sun Mar 19 12:40:14 2017 Thibaut Cornolti
+** Last update Sun Mar 19 18:32:19 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
@@ -45,10 +45,10 @@ int			main(int ac, char **av)
   check_pars(&p);
   get_tetrimino(&s);
   non_block(1, -1);
-  check_game(s, 0);
+  check_game(s, &p, 0);
   if (p.d)
     debug(&p, s);
-  check_game(s, 1);
+  check_game(s, &p, 1);
   init_game(&g, &p);
   non_block(1, 0);
   get_high_score(&g);

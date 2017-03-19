@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 13:40:26 2017 Thibaut Cornolti
-** Last update Sun Mar 19 12:46:44 2017 Thibaut Cornolti
+** Last update Sun Mar 19 18:26:33 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -46,7 +46,7 @@ void		check_pars(t_pars *p)
   check_pars_tab(pars);
 }
 
-void		check_game(t_shapes *s, int i)
+void		check_game(t_shapes *s, t_pars *p, int i)
 {
   if (!s)
     {
@@ -58,7 +58,9 @@ void		check_game(t_shapes *s, int i)
     {
       while (s->name)
 	{
-	  if (s->valide)
+	  if (s->valide &&
+	      s->height <= p->row &&
+	      s->width <= p->col)
 	    return ;
 	  s += 1;
 	}
