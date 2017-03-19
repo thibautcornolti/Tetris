@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 13:11:03 2017 Thibaut Cornolti
-** Last update Sun Mar 19 15:08:18 2017 Thibaut Cornolti
+** Last update Sun Mar 19 16:45:14 2017 Thibaut Cornolti
 */
 
 #include <fcntl.h>
@@ -28,7 +28,8 @@ void		set_high_score(t_game *game)
 
   if (game->high_score >= game->score)
     return ;
-  if ((fd = open(HIGH_SCORE_F, O_RDWR | O_CREAT | O_TRUNC, 0644)) <= 0)
+  if ((fd = open(HIGH_SCORE_F,
+		 O_RDWR | O_CREAT | O_TRUNC, 0644)) <= 0)
     return ;
   write(fd, &(game->score), sizeof(int));
   close(fd);

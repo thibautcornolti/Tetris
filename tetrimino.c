@@ -5,7 +5,7 @@
 ** Login   <rectoria@epi%tech.net>
 ** 
 ** Started on  Mon Feb 20 13:24:10 2017 Bastien
-** Last update Sun Mar 19 12:01:35 2017 Thibaut Cornolti
+** Last update Sun Mar 19 16:47:02 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -38,8 +38,7 @@ void	add_map(int fd, t_shapes *piece)
   char          *temp;
   char          *antileak;
 
-  str = NULL;
-  piece->map = NULL;
+  str = (char *) (piece->map = NULL);
   if (piece->width == 0 && piece->height == 0 && piece->color == 0)
     {
       while (get_next_line(fd));
