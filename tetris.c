@@ -5,11 +5,12 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Sun Mar 19 18:32:19 2017 Thibaut Cornolti
+** Last update Thu Mar 23 11:43:26 2017 Thibaut Cornolti
 */
 
 #include <ncurses.h>
 #include <sys/ioctl.h>
+#include <time.h>
 #include <termios.h>
 #include "tetris.h"
 
@@ -49,6 +50,7 @@ int			main(int ac, char **av)
   if (p.d)
     debug(&p, s);
   check_game(s, &p, 1);
+  srand(time(NULL));
   init_game(&g, &p);
   non_block(1, 0);
   get_high_score(&g);

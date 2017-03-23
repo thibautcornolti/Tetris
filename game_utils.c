@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 12:31:23 2017 Thibaut Cornolti
-** Last update Thu Mar 23 10:00:58 2017 Bastien
+** Last update Thu Mar 23 11:41:55 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -27,7 +27,6 @@ void		get_next_piece(t_pos *pos, t_shapes *shapes, t_pars *pars)
 {
   int		i;
 
-  srand(time(NULL));
   i = (int)rand() % my_shapeslen(shapes);
   while ((pars->row < shapes[i].height ||
 	  pars->col < shapes[i].width) ||
