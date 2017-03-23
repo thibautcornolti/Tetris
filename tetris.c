@@ -5,13 +5,14 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Mon Feb 20 12:18:30 2017 Bastien
-** Last update Thu Mar 23 11:43:26 2017 Thibaut Cornolti
+** Last update Thu Mar 23 15:06:22 2017 Thibaut
 */
 
 #include <ncurses.h>
 #include <sys/ioctl.h>
 #include <time.h>
 #include <termios.h>
+#include <stdlib.h>
 #include "tetris.h"
 
 void			non_block(int act, int vtime)
