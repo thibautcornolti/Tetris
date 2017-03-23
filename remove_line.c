@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Tue Mar  7 18:30:07 2017 Bastien
-** Last update Fri Mar 17 13:16:04 2017 Thibaut Cornolti
+** Last update Thu Mar 23 11:26:36 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -49,6 +49,7 @@ int	check_fulline(char **board, t_game *game)
       if (!x && j == my_strlen(board[0]))
 	{
 	  game->score += game->level*100;
+	  game->line += 1;
 	  if (game->score >= LEVEL_UP * game->level)
 	    {
 	      game->level += 1;
