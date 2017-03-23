@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 10 11:19:37 2017 Thibaut Cornolti
-** Last update Fri Mar 17 18:05:14 2017 Thibaut Cornolti
+** Last update Thu Mar 23 11:31:38 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -57,7 +57,7 @@ void		draw_next(t_pos *pos, t_pars *p)
 	  j = -1;
 	  while (next->map[i][++j])
 	    if (next->map[i][j] != -1)
-	      mvprintw(30 + i, 10 + j, "*");
+	      mvprintw(19 + i, 43 + p->col + j, "*");
 	}
       attroff(COLOR_PAIR(next->color % 7 + 8));
     }
