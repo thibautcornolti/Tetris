@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 12:31:23 2017 Thibaut Cornolti
-** Last update Sun Mar 19 23:42:22 2017 Thibaut Cornolti
+** Last update Thu Mar 23 10:00:58 2017 Bastien
 */
 
 #include <stdlib.h>
@@ -34,14 +34,14 @@ void		get_next_piece(t_pos *pos, t_shapes *shapes, t_pars *pars)
 	 (!shapes[i].valide || !shapes[i].map))
     i = (int)rand() % my_shapeslen(shapes);
   pos->index = i;
-  pos->x = 0;
+  pos->x = pars->col/2 - my_strlen(shapes[i].map[0])/2;
   pos->y = 0;
   pos->orient = 0;
   pos->map = shapes[i].map;
   pos->color = shapes[i].color;
 }
 
-void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
+t_pos		*rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
 {
   static t_pos	*next_p;
   t_pos		*temp;
@@ -49,7 +49,7 @@ void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
   if (!next_p)
     {
       if ((next_p = malloc(sizeof(t_pos))) == 0)
-  	return ;
+  	return (NULL);
       get_next_piece(next_p, shapes, pars);
     }
   temp = next_p;
@@ -57,6 +57,7 @@ void		rand_next(t_pos *pos, t_shapes *shapes, t_pars *pars)
   pos = temp;
   get_next_piece(next_p, shapes, pars);
   draw_next(next_p, NULL);
+  return (pos);
 }
 
 void		apply_map(char **board, t_pos *pos)
